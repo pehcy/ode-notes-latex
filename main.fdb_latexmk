@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1703518406 "/home/pehcy/github/ode-notes/main.tex" "main.pdf" "main" 1703518406
+["pdflatex"] 1703519553 "/home/pehcy/github/ode-notes/main.tex" "main.pdf" "main" 1703519554
   "/etc/texmf/web2c/texmf.cnf" 1703329587 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/pehcy/github/ode-notes/main.tex" 1703344236 258 2f1fef790d0a12c63c1c5c55e80bcd99 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -230,12 +230,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1703329600 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1703329608 2799952 39100c7aa38b911600d33f054d9bf3ac ""
-  "main.aux" 1703518406 1917 153029f45c7e4c5343b54772727e5b64 "pdflatex"
+  "main.aux" 1703519553 1917 153029f45c7e4c5343b54772727e5b64 "pdflatex"
   "main.tex" 1703344236 258 2f1fef790d0a12c63c1c5c55e80bcd99 ""
   "src//plots/chpt4-01.tex" 1703485638 1196 085af01c3a2ac7c24602697c57d403d4 ""
-  "src/existence.tex" 1703518405 2705 cb5b3a0a1532fc32772c290a09cb3382 ""
+  "src//plots/chpt4-02.tex" 1703519553 1648 d3e6ce9c7f0133b222567ee8883ed515 ""
+  "src/existence.tex" 1703518778 2737 c910cbb320482f930868c57dede2820e ""
   "src/solutions.tex" 1703518243 45 cea5278dca171da74fcc377894ad438b ""
-  "styles.sty" 1703518402 1118 774708a97e93fc29fa94964eafb220ae ""
+  "styles.sty" 1703518616 1118 774708a97e93fc29fa94964eafb220ae ""
   (generated)
   "main.aux"
   "main.log"

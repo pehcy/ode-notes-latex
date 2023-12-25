@@ -959,6 +959,10 @@ INPUT src//plots/chpt4-01.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT ./src//plots/chpt4-02.tex
+INPUT src//plots/chpt4-02.tex
+INPUT ./src//plots/chpt4-02.tex
+INPUT src//plots/chpt4-02.tex
 INPUT main.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
