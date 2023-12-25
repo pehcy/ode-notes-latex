@@ -1,0 +1,46 @@
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[most]{tcolorbox}
+\usepackage{thmtools}
+
+\declaretheoremstyle[
+spaceabove=6pt, spacebelow=6pt,
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=1em,
+numberwithin=section
+]{exstyle}
+\declaretheoremstyle[
+spaceabove=6pt, spacebelow=6pt,
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=1em,
+headpunct={},
+qed=$\blacktriangleleft$,
+numbered=no
+]{solstyle}
+\declaretheorem[style=exstyle]{example}
+\declaretheorem[style=solstyle]{solution}
+
+	
+\newtheoremstyle{break}{0pt}{0pt}{\normalfont}{0pt}{\bfseries}{}{\newline}{\thmname{#1} \thmnumber{#2} \quad \thmnote{\normalfont#3}}
+\declaretheorem[numberwithin=chapter,style=break,name=Theorem]{theorem}
+
+\tcolorboxenvironment{theorem}{ 
+  breakable,
+  colback=green!5,
+  colframe={green!55!black},
+}
+
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat = newest}
+\usetikzlibrary{positioning, arrows.meta, graphs}
+\usepgfplotslibrary{fillbetween}

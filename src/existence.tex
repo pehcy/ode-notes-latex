@@ -1,0 +1,87 @@
+\chapter{Existence and Uniqueness of Solutions}
+
+In this topic, we would like to address the existence and uniqueness to the general 
+first-order IVP:
+
+\begin{equation}
+    y' = f(x,y), \quad y(x_0) = y_0
+\end{equation}
+
+\begin{theorem}[Peano's Existence theorem]
+    Let $R = \{(x,y) \> | \> a < x < b, c < y < d \}$ be a open rectangular 
+    region containing the point $(x_0, y_0)$. If the function $f(x, y)$ 
+    is continuous in $R$.
+
+    \[
+        y' = f(x,y), \quad y(x_0) = y_0
+    \]
+
+    \input{plots/chpt4-01.tex}
+
+    in some interval $x_0 - h < x < x_0 + h$ contained in $a < x < b$.
+\end{theorem}
+
+\begin{example}
+    Determine whether Peano's Existence theorem does or does not guarantee existence of a 
+    solution of the initial value problem:
+    \[
+        xy' = y,\quad y(1) = 0
+    \]
+\end{example}
+\begin{solution}
+    The DE can be written as $y' = f(x,y)$ where $ f(x,y) = \frac{y}{x}$. 
+    Observe that $f$ is continuous everywhere in the $xy$-plane except on the line 
+    $x = 0$ (which is the $y$-axis). Since the initial point $(1, 0)$. Hence,
+    the theorem guarantees the existence of a solution of the IVP.
+\end{solution}
+
+The next example tells us that there are first-order initial value problems that have 
+more than one solutions.
+
+\newpage
+
+\subsection*{An IVP with more than one solution}
+
+\begin{example}
+    Verify that the function $y_1 = 0$ and $y_2 = x$ are solutions of the initial value problem
+
+    \[
+        xy' = y,\quad y(0) = 0
+    \]
+\end{example}
+
+\begin{remark}
+    The function $f(x,y) = \frac{y}{x}$ is continuous everywhere in the plane except
+    at the points $(x, y)$ where $x=0$. Thus, Peano Existence theorem does not guarantee 
+    the existence of a solution in some neighbourhood of the initial point $(0,0)$.
+\end{remark}
+
+\begin{theorem}[Picard's Existence and Uniqueness Theorem]
+    Let $R = \{(x,y) \> | \> a < x < b, c < y < d\}$ be an open rectangular region 
+    containing the point $(x_0, y_0)$.
+\end{theorem}
+
+\begin{example}
+    Determine whether Picard's theorem guarantees that the first-order IVP
+    \[
+        y' = y^2 + x^3, \quad y(2) = 5
+    \]
+    has a unique solution.
+\end{example}
+\begin{solution}
+    Consider the following IVP
+
+    \[
+        \begin{cases}
+            y' = f(x,y) = y^2 + x^3\\
+            y(2) = 5
+        \end{cases}
+    \]
+
+    Observe that $f$ is continuous $\forall (x,y) \in \mathbb{R}$. And since
+    \[
+        f_y(x, y) = \frac{\partial f}{\partial y}=2y \text{ is continuous } \forall (x,y) \in \mathbb{R}
+    \]
+    Thus, $f$ and $\frac{\partial f}{\partial y}$ are continuous near the initial point (2, 5). 
+    By Picard's theorem, this IVP has a unique solution.
+\end{solution}
