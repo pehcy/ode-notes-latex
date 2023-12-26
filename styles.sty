@@ -4,6 +4,7 @@
 \usepackage{amsthm}
 \usepackage[most]{tcolorbox}
 \usepackage{thmtools}
+\usepackage{mathtools}
 
 \declaretheoremstyle[
 spaceabove=6pt, spacebelow=6pt,
@@ -27,13 +28,22 @@ numbered=no
 \declaretheorem[style=solstyle]{solution}
 
 	
-\newtheoremstyle{break}{0pt}{0pt}{\normalfont}{0pt}{\bfseries}{}{\newline}{\thmname{#1} \thmnumber{#2} \quad \thmnote{\normalfont#3}}
+\newtheoremstyle{break}{0pt}{0pt}{\normalfont}{0pt}{\bfseries}{}{\newline}{\thmname{#1} \thmnumber{#2} \quad \thmnote{\textbf#3}}
 \declaretheorem[numberwithin=chapter,style=break,name=Theorem]{theorem}
 
 \tcolorboxenvironment{theorem}{ 
   breakable,
   colback=green!5,
   colframe={green!55!black},
+}
+
+\newtheoremstyle{break}{0pt}{0pt}{\normalfont}{0pt}{\bfseries}{}{\newline}{\thmname{#1} \thmnumber{#2} \quad \thmnote{\textbf#3}}
+\declaretheorem[numberwithin=chapter,style=break,name=Definition]{definition}
+
+\tcolorboxenvironment{definition}{ 
+  breakable,
+  colback=red!5,
+  colframe={red!55!black},
 }
 
 
@@ -44,3 +54,5 @@ numbered=no
 \pgfplotsset{compat = newest}
 \usetikzlibrary{positioning, arrows.meta, graphs}
 \usepgfplotslibrary{fillbetween}
+
+\usepackage{empheq}

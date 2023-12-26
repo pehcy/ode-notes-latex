@@ -1,1 +1,182 @@
-\chapter{Solutions of Differential Equation}
+\chapter{Solving First-order Differential Equation}
+
+\begin{theorem}
+    If function $f(x)$ and function $g(x)$ are continuous, then equation 
+    \[
+        \int f(x) dx = \int g(y) dy + C
+    \]
+\end{theorem}
+
+\begin{example}
+    Solve $e^{x+y}\> dy - 1\> dx = 0$.
+\end{example}
+\begin{solution}
+    The DE is separable and can be formulate as 
+    \begin{align*}
+        e^{x+y}\> dy = 1\> dx \quad &\Rightarrow e^x * e^y \> dy = 1\> dx\\
+        &\Rightarrow e^y \> dy = e^{-x}\> dx
+    \end{align*}
+    
+    Integrating both sides we have
+    \begin{align*}
+        \int e^y \> dy = \int e^{-x}\> dx \quad &\Rightarrow e^y = -e^{-x} + C & 
+        e^y > 0 \text{ so that RHS }> 0 \\
+        &\Rightarrow y = \ln |-e^{-x} + C| &\text{general solution in implicit form}
+    \end{align*}
+\end{solution}
+
+\begin{example}
+    Find all solutions to $y' = -2y^2x$. Be sure to describe any singular solutions if there is one.
+\end{example}
+\begin{solution}
+    Is this DE separable? Yes, since it can be written as 
+    \[
+        - \frac{dy}{y^2} = 2x\> dx
+    \]
+    Integrating both sides of the equation, we have 
+    \begin{align*}
+        -\frac{1}{2y} = -\frac{1}{2}x^2 + c_1 &\Rightarrow \frac{1}{y} = x^2 - 2c_1\\
+        &\Rightarrow y = \frac{1}{x^2 - 2c_1}
+    \end{align*}
+
+    By inspection, $y = 0$ is another solution (obvious solution).
+
+    Therefore, the solutions are $y = 0$ and $y = (x^2 - 2c)^{-1} \quad \forall x \in \mathbb{R}$.
+\end{solution}
+
+\section{Exact Equation}
+
+The equation 
+
+\begin{equation}
+    M(x, y)\> dx + N(x,y)\> dy = 0
+\end{equation}
+
+is exact if $\exists F(x,y)$ such that $M\> dx + N\> dy = dF$. In this case, the solution to the DE 
+is given by $dF = 0$ or $F(x,y) = C$, $C$ is a constant.
+
+\begin{definition}[Total differential]
+    Let $F(x,y)$ be a function that has continuous first derivative in a 
+    domain $D$.
+
+    \begin{equation}
+        dF = \frac{\partial F}{\partial x}dx + \frac{\partial F}{\partial y}dy 
+        \quad \forall (x,y) \in D
+    \end{equation}
+\end{definition}
+
+\begin{theorem}[Test for Exactness]
+    Suppose $M,N, \frac{\partial M}{\partial y}$, and $\frac{\partial N}{\partial x}$ are continuous in the open 
+    rectanger $R: a< x<b, \> c < y < d$. Then 
+
+    \begin{equation}
+        M(x,y)\> dx + N(x,y)\> dy = 0 \text{ if and only if } \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    ($\Rightarrow$) If $M(x,y)\> dx + N(x,y)\> dy = 0$ is exact, then we can find a potential 
+    function $F$ such that $F_x = M$ and $F_y = N$. As the first-order partial derivatives of $M$ and 
+    $N$ are continuous in $R$, according to the commutative law of partial derivative operator,
+
+    \begin{equation}
+        \frac{\partial M}{\partial y} = F_{xy} = F_{yx} = \frac{\partial N}{\partial x}
+    \end{equation}
+
+    at each point of $R$.
+
+    ($\Leftarrow$) On the other hand, consider 
+    
+    \begin{equation}
+        \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}
+    \end{equation}
+
+    to prove $M(x,y)\> dx + N(x,y)\> dy = 0$ is exact, we must show that we can construct a function $F$
+    such that $F_x = M$ and $F_y = N$.
+
+    Let $\phi$ to be a function such that $\frac{\partial \phi}{\partial x} = M$. Then 
+    \begin{equation}
+        \frac{\partial^2 \phi}{\partial y \partial x} = \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}
+    \end{equation}
+    so that 
+    \begin{equation}
+        \frac{\partial N}{\partial x} = \frac{\partial^2 \phi}{\phi x \phi y}
+    \end{equation}
+
+    Integrating both sides with respect to $x$, we get 
+    \begin{equation}
+        N = \frac{\partial \phi}{\partial y} + B'(y)
+    \end{equation}
+\end{proof}
+
+\begin{example}
+    Solve $3x(xy - 2)\> dx + (x^3 + 2y)\> dy = 0$.
+\end{example}
+\begin{solution}
+    The DE is in the form of $M\> dx + N\> dy = 0$, where 
+    \[
+        \begin{cases}
+            M = \displaystyle \frac{1}{t^2} + \frac{1}{y^2} \\[1em]
+            N = \displaystyle \frac{at + 1}{y^3}
+        \end{cases}
+    \]
+
+    In order to make DE to be exact, we must have $M_y = N_t \Rightarrow a = \ldots$.
+\end{solution}
+
+\begin{example}
+    Solve the initial-value problem
+
+    \[
+        (2x\cos y + 3x^2 y)\> dx + (x^3 - x^2 \sin y - y)\> dy = 0, \quad y(0) = 2
+    \]
+\end{example}
+\begin{solution}
+    First, we have to determine whether or not the equation is exact. Here 
+
+    \[
+        M = 2x\cos y + 3x^2y, \quad N = x^3 - x^2\sin y - y
+    \]
+    \[
+        M_y = -2x\sin y + 3x^2, \quad N_x = 3x^2 - 2x\sin y
+    \]
+
+    Since $M_y = N_x = 3x^2 - 2x\sin y \quad \forall (x, y) \in \mathbb{R}^2$, the DE is exact in every rectangular
+    domain $D$. Next, we must find $F$ such that
+
+    \[
+        \left\{
+        \begin{array}{cc}
+         F_x = M = 2x\cos y + 3x^2y & \quad \refstepcounter{equation}(a)\\
+         M_y = x^3 - x^2\sin y - y & \quad \refstepcounter{equation}(b)
+        \end{array}
+        \right.
+        \]
+    
+        From $(a) \Rightarrow F = \int (2x\cos y + 3x^2y)\> dx = x^2\cos y + x^3y + g(y)$.\quad (c)\\
+        where $g$ is a function of $y$.
+
+        Again, $(c) \Rightarrow F_y = -x^2\sin y + x^3 + g'(y)$ \quad (d)
+
+        Now comparing (b) and (d), 
+        \[
+            g'(y) = -y \xrightarrow[]{\text{Integrate with respect to } y} g(y) = -\frac{y^2}{2} + C \quad 
+            \text{where } C \text{ is an arbitrary constant}
+        \]
+
+        Thus, we have potential function 
+        \[
+            F = x^2\cos y + x^3y - \frac{1}{2}y^2 + C
+        \]
+
+        Hence a 1-parameter family of solutions is $F(x,y) = 0$ or 
+        $\displaystyle x^2\cos y + x^3y - \frac{1}{2}y^2 + C$.
+
+        Finally, we can now use the initial condition $y(0) = 2$ to find $C$: Subtituting 
+        $x = 0, y = 2$ into the above solution, we obtain
+
+        \[
+            F(0, 2) = 0 + 0 - 2 + C = 0 \Rightarrow C = 2
+        \]
+
+        Therefore, the solution to the IVP is $\displaystyle x^2\cos y + x^3y - \frac{1}{2}y^2 + 2$.
+\end{solution}

@@ -56,6 +56,9 @@ more than one solutions.
     the existence of a solution in some neighbourhood of the initial point $(0,0)$.
 \end{remark}
 
+Obviously, the next thing we would like to find out is that if an IVP does have a solution, what conditions 
+could we impose on (5) to 
+
 \begin{theorem}[Picard's Existence and Uniqueness Theorem]
     Let $R = \{(x,y) \> | \> a < x < b, c < y < d\}$ be an open rectangular region 
     containing the point $(x_0, y_0)$.
@@ -86,4 +89,50 @@ more than one solutions.
     \]
     Thus, $f$ and $\frac{\partial f}{\partial y}$ are continuous near the initial point (2, 5). 
     By Picard's theorem, this IVP has a unique solution.
+\end{solution}
+
+\begin{example}
+    Use Picard's theorem or Peano Existence theorem to discuss the existence and 
+    uniqueness of the solutions of the following IVP
+
+    \[
+        y' = 3y^{2/3}, \quad y(x_0) = y_0
+    \]
+\end{example}
+
+\begin{example}
+    Use the Picard's existence and uniqueness theorem to prove that $y(x) = 3$ is the only 
+    solution to the IVP
+
+    \[
+        y' = \frac{x(y^2 - 9)}{x^2 + 1}, \quad y(0) = 3
+    \]
+\end{example}
+
+\begin{solution}
+    \[
+\left\{
+\begin{array}{cc}
+ y' = f(x,y) = \frac{x(y^2 - 9)}{x^2 + 1} & \quad \refstepcounter{equation}(1)\\
+ y(x_0) = y_0 & \quad \refstepcounter{equation}(2)
+\end{array}
+\right.
+\]
+
+Being rational function, $f$ is continuous $\forall (x, y) \in \mathbb{R}^2$ except at the points 
+where $x^2 + 1 = 0$. Since $x^2 + 1 \neq 0 \quad \forall x \in \mathbb{R}$, so $f$ is 
+continuous, the same condition can be apply on $\partial f / \partial y$.
+
+First off, we need to show that  $y(x) = 3$ is a solution to the IVP. 
+By direct substitution, we substitute $y(x) = 3, y'(x) = 0$ into Eq (1).
+
+\[
+    \text{LHS of Eq } (1) = 0 = \frac{0\,(3^2 - 9)}{0^2 + 1} = \text{RHS of Eq }(1)
+\]
+
+Also, $y(x) = 3 \Rightarrow y(0) = 3 \Rightarrow y(x) = 3$ satisfies condition (2).
+
+By Picard's theorem, $y(x) = 3$ is the only solution to the IVP.
+
+
 \end{solution}
