@@ -180,3 +180,126 @@ is given by $dF = 0$ or $F(x,y) = C$, $C$ is a constant.
 
         Therefore, the solution to the IVP is $\displaystyle x^2\cos y + x^3y - \frac{1}{2}y^2 + 2$.
 \end{solution}
+
+\begin{example}
+    Determine the constant $a$ so that the equation 
+    \[
+        \frac{1}{t^2} + \frac{1}{y^2} + \biggl(\frac{at+1}{3}\biggr) \frac{dy}{dt} = 0
+    \]
+    is exact, and then solve the resulting equation.
+\end{example}
+
+\begin{theorem}
+    The general solution to an exact equation $M(x,y)\>dx + N(x,y)\>dy = 0$ is 
+    defined implicitly by 
+    \begin{equation}
+        F(x,y) = C
+    \end{equation}
+    where $F$ is a potential function of the DE and $C$ is an 
+    arbitrary constant.
+\end{theorem}
+\begin{remark}
+    We can find $F$ by solving the system of equations 
+    \begin{equation}
+        \begin{cases}
+            \displaystyle 
+            \frac{\partial F}{\partial x} = M\\[1em]
+            \displaystyle 
+            \frac{\partial F}{\partial y} = N
+        \end{cases}
+    \end{equation}
+\end{remark}
+
+\begin{proof}
+    If $M(x,y)\>dx + N(x,y)\>dy = 0$ is exact, then $\exists$ a potential
+    function $F$ such that $M(x,y)\>dx + N(x,y)\>dy = dF$.
+
+    This gives us $dF = 0$ so that $F(x,y) = C$, where $C$ is an arbitrary 
+    constant.
+\end{proof}
+
+\section{Making an Equation Exact: Integrating Factors}
+
+Sometimes it is impossible to transform a nonexact DE that into an exact 
+equation by multiplying it by a function. The resulting DE can be resolved using the technique
+ of the previous section. However, it is impossible for a solution to be lost or gained as 
+a result of the multiplication.
+
+\begin{definition}
+    If $M(x,y)\>dx + N(x,y)\>dy = 0$ is not exact but 
+    $I(x,y)M(x,y)\>dx + N(x,y)I(x,y)\>dy = 0$ is exact, then $I(x,y)$ is called 
+    an integrating factor of the DE.
+\end{definition}
+\begin{remark}
+    We may be able to determine $I(x,y)$ from the equation 
+    \begin{equation}
+        \frac{\partial}{\partial y}(IM) = \frac{\partial}{\partial y}(IN)
+    \end{equation}
+\end{remark}
+
+\begin{example}
+    Verify that $I(x,y) = x^{-1}$ is an integrating factor of 
+    $(x+y)\> dx + x\ln x \> dy = 0$ on the interval $(0, \infty)$. Hence, find the 
+    solution for this DE.
+\end{example}
+\begin{solution}
+    \[
+        (x+y)\> dx + x\ln x \> dy = 0 \quad \quad (1)
+    \]
+    First, show that Eq(1) is not exact. Suppose $M = x+y$, and $N = x\ln x$.
+    Then 
+    \[
+        M_y = 1, \quad N_x = x\biggl(\frac{1}{x}\biggr) + \ln x = 1 + \ln x
+    \]
+
+    Because $M_y \neq N_x$, so Eq(1) is not exact.
+
+    Next, multiplying Eq(1) by $\displaystyle I(x,y) = \frac{1}{x}$, we obtain 
+    \[
+        \frac{(x+y)}{x}\>dx + \ln x \> dy = 0 \quad \quad (2)
+    \]
+
+    Now we show that Eq(2) is exact. Let $\displaystyle \tilde{M} = 1 + \frac{1}{y}$, 
+    and $\tilde{N} = \ln x$, then 
+
+    \[
+        \frac{\partial \tilde{M}}{\partial y} = \frac{\partial \tilde{N}}{\partial x} = \frac{1}{x}
+    \]
+
+    The general solution will be $F(x,y) = C$, we can find $F$ by solving 
+    the system of equations 
+
+    \[
+        \left\{
+        \begin{array}{cc}
+         \displaystyle \frac{\partial F}{\partial x} = 1+\frac{y}{x} & \quad \refstepcounter{equation}(3)\\[1em]
+         \displaystyle \frac{\partial F}{\partial y} = \ln x & \quad \refstepcounter{equation}(4)
+        \end{array}
+        \right.
+    \]
+
+    Integrating Eq(3) with respect to $x$ we have 
+    \[
+        \int (3) dx \quad \Rightarrow F = \int \biggl(1 + \frac{y}{x}\biggr)\> dx 
+        = x + y\ln x + g(y) \quad \quad (5)
+    \]
+    where $g(y)$ is a function of $y$ alone.
+
+    Differentiate Eq(5) with respect to $y$, 
+    \[
+        \frac{\partial F}{\partial y} = \ln |x| + g'(y) \quad \quad (6)
+    \]
+
+    Now comparing Eq(4) and Eq(6), we obtain $g'(y) = g(y) = 0$.
+    
+    Thus, the general solution is $F = x + y\ln |x| + 0$.
+
+\end{solution}
+
+\section*{Summary: Solving 1st order DE}
+
+\begin{enumerate}
+    \item Separable equation: $f(x) \>dx = f(y) \>dy$. (Method of solving: integrating both sides)
+    \item Exact DE: Use \textbf{Exactness Test}, whether 
+        $\displaystyle \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}$
+\end{enumerate}

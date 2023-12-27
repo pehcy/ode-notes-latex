@@ -10,7 +10,7 @@
     ]
 
     % Add plot
-    \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 400, color = red]{5/(1+100*e^(-x))};
+    \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 400, color = red, very thick]{5/(1+100*e^(-x))};
 
     % Labels
     \node [right] at (current axis.right of origin) {$x$};
@@ -32,18 +32,18 @@
     \node [above = 2pt, color = red] at (8, 5) {$y = \phi (x)$};
 
     % Colouring areas
-    \fill[orange, opacity = 0.25] (2, 1)-- (2, 5) -- (8, 5) -- (8, 1);
+    \fill[orange, opacity = 0.25] (2, 0.4)-- (2, 4.9) -- (8, 4.9) -- (8, 0.4);
 
     % Dashed lines (y-axis)
-    \addplot[color = orange, dashed, thick] coordinates {(0, 1) (8, 1)};
-    \addplot[color = orange, dashed, thick] coordinates {(0, 5) (8, 5)};
+    \addplot[color = orange, dashed, thick] coordinates {(0, 0.4) (8, 0.4)};
+    \addplot[color = orange, dashed, thick] coordinates {(0, 4.9) (8, 4.9)};
 
     % Dashed lines (x-axis)
-    \addplot[color = orange, dashed, thick] coordinates {(2, 0) (2, 5)};
-    \addplot[color = orange, dashed, thick] coordinates {(8, 0) (8, 5)};
+    \addplot[color = orange, dashed, thick] coordinates {(2, 0) (2, 4.9)};
+    \addplot[color = orange, dashed, thick] coordinates {(8, 0) (8, 4.9)};
 
-    \addplot[color = blue, solid, thick] coordinates {(3.5, 0) (3.5, 5)};
-    \addplot[color = blue, solid, thick] coordinates {(6.5, 0) (6.5, 5)};
+    \addplot[color = blue, solid, thick] coordinates {(3.5, 0) (3.5, 4.9)};
+    \addplot[color = blue, solid, thick] coordinates {(6.5, 0) (6.5, 4.9)};
 
     \end{axis}
     \end{tikzpicture}
