@@ -1,0 +1,78 @@
+\ProvidesPackage{polydiv}
+\usepackage{polynom,array}
+
+
+\makeatletter
+\def\pld@ArrangeResult#1{%
+    \ifx\pld@remainder\@empty
+        \@tempcnta\pld@maxcol\relax
+        \pld@InsertItems@do\pld@lastline
+            {\pld@firsttrue\pld@PLD{\pld@R{0}{1}}}%
+    \fi
+    \ifnum\pld@currstage>\z@
+        \pld@Extend\pld@allines{\pld@lastline\cr}%
+    \else
+        \pld@InsertFake\pld@lastline
+    \fi
+    \pld@iftopresult
+        \def\pld@lastline{\pld@PrintPoly\pld@divisor%
+        %====================================================================================
+        \quad\smash{{\color{red}\rule[-6pt]{\arrayrulewidth}{17pt}}}\kern-\arrayrulewidth&}%
+        %====================================================================================
+    \else
+        \let\pld@lastline\@empty
+        \ifx B\pld@style\else
+            \def\pld@lastline{\pld@leftdelim\strut\pld@rightxdelim&}%
+        \fi
+    \fi
+    \expandafter\pld@AR@col\expandafter\pld@PLD
+                           \expandafter\pld@lastline#1+\relax+%
+    \pld@SplitQuotient
+    \pld@iftopresult
+        \let\pld@currentline\@empty
+        \expandafter\pld@AR@col\expandafter\pld@PLD
+                               \expandafter\pld@currentline
+                                           \pld@quotient+\relax+%
+        \expandafter\pld@AR@col\expandafter\pld@XPLD
+                               \expandafter\pld@currentline
+                                           \pld@shadow+\relax+%
+        \edef\pld@subline{%
+            \noexpand\cline{\tw@-\pld@maxcol}%
+            \noalign{\vskip\jot}}%
+        \pld@Extend\pld@currentline{\expandafter\cr\pld@subline}%
+    \else
+        \@tempcnta-\@tempcnta
+        \advance\@tempcnta\pld@maxcol\relax \advance\@tempcnta\@ne
+        \edef\pld@span{\the\@tempcnta}%
+        \ifx B\pld@style
+          \pld@AddTo\pld@lastline{%
+            &\multispan\pld@span${}=%
+            \pld@PrintPolyWithDelims\pld@divisor
+            \expandafter\pld@IfSum\expandafter{\pld@divisor}{}{\cdot}%
+            \expandafter\pld@IfSum\expandafter{\pld@quotient}\pld@true
+                                                             \pld@false
+            \pld@if \pld@leftdelim
+                    \pld@PrintPolyShadow
+                    \pld@rightdelim
+              \else \pld@PrintPolyShadow \fi
+            \pld@firstfalse
+            \expandafter\pld@PrintRemain\expandafter{\pld@remainder}$}%
+        \else
+          \pld@AddTo\pld@lastline{%
+            &\multispan\pld@span$\pld@leftxdelim\strut\pld@rightdelim
+            \pld@div
+            \pld@PrintPolyWithDelims\pld@divisor=
+            \pld@PrintPolyShadow
+            \ifx\pld@remainder\@empty\else
+                +{}%
+                \setbox\z@=\hbox{$\displaystyle
+                  \frac{\let\strut\@empty\pld@firsttrue \expandafter
+                        \pld@PrintRemain\expandafter{\pld@remainder}}%
+                       {\let\strut\@empty\pld@PrintPoly\pld@divisor}$}%
+                \dp\z@=\z@\box\z@
+            \fi
+            $}%
+        \fi
+    \fi
+\expandafter\pld@AR@\pld@allines\relax}
+\makeatother

@@ -1,1 +1,280 @@
 \chapter{Power Series Solutions}
+
+\begin{example}
+    Solve the IVP 
+    \[
+        \left\{
+        \begin{array}{cc}
+         y' + 2xy = x^3 & \quad \refstepcounter{equation}(1)\\[1em]
+         y(1) = 1 & \quad \refstepcounter{equation}(2)
+        \end{array}
+        \right.
+    \]
+    Find the first 3 nonzero-terms of the Taylor series of $y(x)$ about $x=1$.
+\end{example}
+\begin{solution}
+    The Taylor series of $y(x)$ about $x=1$ is 
+    \[
+        y(x) = \sum^\infty_{n=0} \frac{y^{(n)}(1)}{n!}(x-1)^n = 
+        y(1) + y'(1)(x-1) + \frac{y''(1)}{2!}(x-1)^2 + 
+        \frac{y^{(3)}(1)}{3!}(x-1)^2 + \cdots
+    \]
+    by definition.
+
+    It remains to find $y^{(n)}(1)$ for $n \geq 1$ (until we get the first 3 nonzero-term)
+
+    From Eq(1), 
+    \[
+        y'(x) = x^3 -2xy(x) \Rightarrow y'(1) = 1^3 - 2(1)y(1) = 1 - 2 = -1 
+    \]
+
+    From Eq(1), differentiate again,
+    \[
+        y''(x) = 3x^2 - \biggl(2x\frac{dy}{dx} + y(2)\biggr) = 3x^2 - 2xy' -2y \quad \quad (3)
+    \]
+
+    Substitute $y(1)= 1, y'(1) = -1$ into Eq(3),
+    \[
+        y''(1) = 3(1)^2 - 2(1)(-1) - 2 = 3
+    \]
+
+    Thus the Taylor series is 
+    \begin{align*}
+        y(x) &= 1 + (-1)(x-1) + \frac{3}{2!}(x-1)^2 + \cdots \\
+        &= 1 + (1-x) + \frac{3}{2!}(x-1)^2 + \cdots \\ 
+        &= 2 - x + \frac{3}{2!}(x-1)^2 + \cdots
+    \end{align*}
+\end{solution}
+
+Q: Here is the question, under what condition does a DE has a solution of the form 
+
+\begin{equation}
+    \sum^\infty_{n=0} a_n (x - x_0)^n 
+\end{equation}
+
+This bring us to another section: which is about analytic at a point for a series.
+
+\newpage
+\section{Analytic at a point}
+
+\begin{definition}
+    If the Taylor series of $f$, where 
+    \begin{equation}
+        f(x) = \sum^\infty_{n=0} \frac{f^{(n)}(a)}{n!}(x-a)^n
+    \end{equation}
+
+    exists and converges to $f(x) \quad \forall x \in I$, an open interval containing $x = a$, 
+    then function $f$ is analytic at $x = a$. 
+
+\end{definition}
+
+\subsection*{Example of Analytic functions}
+All polynomials $P(x) = a_0 + a_1x + a_2x^2 + \cdots$ are analytic $\forall x \in \mathbb{R}$.
+
+\begin{example}
+    \textbf{Legendre Equation}
+
+    \[
+        (1 - x^2)y'' + 2xy' + \lambda y = 0 \quad \quad (1)
+    \]
+
+    Find a power series solution for this DE.
+\end{example}
+\begin{solution}
+    In the standard form $y'' + p(x)y' + q(x)y = 0$, we have 
+    \[
+        p(x) = \frac{2}{1 - x^2}, \quad q(x) = \frac{\lambda}{1 - x^2}
+    \]
+    Both $p$ and $q$ are analytic at $x=0$. As $x=0$ is an ordinary point
+    , Eq(1) will have two linearly independent solutions of the form 
+    \[
+        \sum^\infty_{n=0}a_nx^n 
+    \]
+
+    Substitute $\displaystyle y = \sum^\infty_{n=0} a_nx^n, y' = \sum^\infty_{n=1}a_nx^{n-1}$,
+    $\displaystyle y'' = \sum^\infty_{n=2} n (n-1)a_nx^{n-2} \quad \quad (2)$
+
+    and,
+
+    \begin{align*}
+        -x^2y'' = \sum^\infty_{n=2} -(n-1)na_nx^{n} &\Rightarrow 2xy' = \sum^\infty_{n=1} 2na_nx^n = 2a_1x + \sum^\infty_{n=2} 2na_nx^n\\
+        &\Rightarrow \lambda y = \sum^\infty_{n=0} \lambda a_n x^n = \lambda a_0 + \lambda a_1 x + \sum^\infty_{n=2} \lambda a_n x^n
+    \end{align*}
+
+    into Eq(1).
+
+    Replacing $n$ to $n+2$ in Eq(2), we obtain
+
+    \begin{align*}
+        (2) &= \sum^\infty_{n+2=2} (n+2)(n+1) a_{n+2}\>  x^{n+2-2} \\ 
+        &= \sum_{n=0}^{\infty} (n+1)(n+2)a_{n+2}\> x^n \\
+        &= (0+2)(0+1)a_2 + (1+2)(1+1)a_3 + \sum^\infty_{n=2}(n+1)(n+2)a_{n+2}x^n
+    \end{align*}
+
+    So that 
+
+    \[
+        (2a_2 + \lambda a_0) + (6a_3 + 2a_1 + \lambda a_1) x + \sum_{n=2}^{\infty} \biggl\{(n+1)(n+2)a_{n+2}
+        - n(n-1)a_n + 2na_n + \lambda a_n \biggr\} x^n = 0    
+    \]
+
+    Equating coefficients both sides to zero,
+
+    \[
+        \left\{
+        \begin{array}{cc}
+         2a_2 + \lambda q = 0 & \quad \refstepcounter{equation}(3)\\[0.8em]
+         6a_3 + (2 + \lambda) a_1 = 0 & \quad \refstepcounter{equation}(4)
+        \end{array}
+        \right.
+    \]
+
+    \subsection*{[Recurrence relation]}
+    \[
+        (n+1)(n+2) a_{n+2} + [2n + \lambda - n(n-1)]a_n = 0 \text{ for } n \geq 2
+    \]
+
+    Write all the $a_n$'s in terms of $a_0$ and $a_1$,
+
+    \[
+        (3) \Rightarrow a_2 = -\frac{\lambda}{2} a_0
+    \]
+
+    \[
+        (4) \Rightarrow a_3 = - \frac{(2 + \lambda)}{6} a_1
+    \]
+
+    \begin{align*}
+        (5) \Rightarrow a_4 &= \frac{2(2-3)-\lambda}{4 (3)}\> a_0\\
+        &= \frac{-2-\lambda}{4(3)} \biggl(\frac{\lambda}{2}\biggr)\> a_0\\
+        &= \frac{\lambda (\lambda + 2) a_0}{4!}
+    \end{align*}
+
+    The solution is 
+
+    \begin{align*}
+        y &= (a_0 + a_2x^2 + a_4x^4 + \cdots) + (a_1 + a_3x^3 + a_5x^5 + \cdots)\\
+        &= a_0 \biggl(1 - \frac{\lambda}{2}x^2 + \frac{\lambda (\lambda+2)}{4!}x^4 + \cdots\biggr) + 
+        a_1 \biggl(x - \frac{\lambda + 2}{3!}x^3 + \frac{\lambda (\lambda+2)}{5!}x^5 + \cdots\biggr)
+    \end{align*}
+
+\end{solution}
+
+\section{Regular Singular Point}
+
+\begin{theorem}[Frobenius Theorem]
+    Given an equation $P(x)y'' + Q(x)y' + R(x)y = 0$, if $x$ is a regular singular point at $\mathbb{R}$, 
+    then there exists a solution of the form 
+
+    \[
+        y = (x - x_0)^n \sum^\infty_{n=0} a_n (x-x_0)^n = \sum^\infty_{n=0} a_n (x-x_0)^{2n}
+    \]
+\end{theorem}
+
+\begin{example}
+    Solve the DE
+    \[
+        2xy'' + y' - y = 0
+    \]
+    and check whether $x = 0$ is a regular singular point of of this equation.
+\end{example}
+\begin{solution}
+    The DE is 
+    \[
+        2xy'' + y' - y = 0 \quad \quad (1)
+    \]
+
+    Firstly, we need to check whether $x = 0$ is a RSP of Eq(1).
+
+    By Theorem 3.1,  (1) has a Frobenius solution of the form $\displaystyle \sum^\infty_{n=0} a_n x^{n+r}$.
+
+    To find the solutions, substitute 
+
+    \[
+        y = \sum^\infty_{n=0} a_n x^{n+r}
+    \]
+
+    \[
+        y' = \sum^\infty_{n=0} (n+r) a_n x^{n+r-1} = ra_0 x^{r-1} + \sum^\infty_{n=1} (n+r)a_nx^{n+r-1}
+    \]
+
+    \[
+        y'' = \sum^\infty_{n=0} (n+r)(n+r-1) a_n x^{n+r-2}
+    \]
+
+    into Eq(1),
+
+    \begin{align*}
+        &2xy'' = \sum^\infty_{n=0} 2(n+r)(n+r-1)a_n x^{n+r-1}\\
+        &\Rightarrow 2xy'' = 2r(r-1)a_0x^{r-1} + \sum^\infty_{n=1} 2(n+r)(n+r-1)x^{n+r-1} a_n
+    \end{align*}
+
+    \textbf{Assumption:} Assume that $a_0 \neq 0$, 
+    \begin{align*}
+        (2) &\Rightarrow 2r(r-1) + r = 0\\
+        &\Rightarrow 2r^2 - r = 0 & \text{Indicial equation}\\
+        &\Rightarrow r = 0 \quad \text{ or } \quad r = \frac{1}{2} & \text{Indicial roots}
+    \end{align*}
+
+    Case 1: When $r = 0$, from Eq(3) we have 
+
+    \[
+        (3) \Rightarrow [2(n+1)n + (n+1)]a_{n+1} = a_n \quad \Rightarrow \quad a_{n+1} = \frac{a_n}{(n+1)(2n+1)}\> \forall 
+        n \geq 0
+    \]
+
+    Iterate through $n = 0, 1, 2, \ldots$ and find $a_n$ in terms of $a_0$,
+
+    \begin{align*}
+        &n = 0: &a_1 = \frac{a_0}{1 \times 1} = a_0\\
+        &n = 1: &a_2 = \frac{a_1}{2 \times 3} = \frac{a_0}{(1 \times 2)(1 \times 3)}\\
+        &n = 2: &a_3 = \frac{a_2}{3 \times 5} = \frac{a_0}{(1 \times 2 \times 3)(1\times 3 \times 5)}\\
+        &n = 3: &a_4 = \frac{a_3}{4 \times 7}
+        = \frac{a_0(2 \times 4 \times 6 \times 8)}{(1 \times 2 \times 3 \times 4)(1 \times 3 \times 5 \times 7)(2 \times 4 \times 6 \times 8)}\\
+        & &= \frac{a_0}{(1 \times 2 \times 3 \times 4)(1 \times 3 \times 5 \times 7)}
+    \end{align*}
+
+    by mathematical induction, $y_1$ can be express as 
+    \[
+        y_1 = a_0 \biggl[1 + \sum_{n=1}^{\infty} \frac{x^n}{n! \> \prod_{i=1}^{n} (2n-1) }\biggr],\quad  n \in \mathbb{Z}^+
+    \]
+
+
+    Case 2: When $r = 1/2$, from Eq(3) we have
+
+    \begin{align*}
+        &n = 0: &a_1 = \frac{a_0}{1 \times 3} = \frac{1}{3}a_0\\
+        &n = 1: &a_2 = \frac{a_1}{5 \times 2} = \frac{a_0}{(1 \times 3 \times 5)(1 \times 2)}\\
+        &n = 2: &a_3 = \frac{a_2}{7 \times 3} = \frac{a_0}{(1 \times 3 \times 5 \times 7)(1\times 2 \times 3)}\\
+        &n = 3: &a_4 
+        = \frac{a_0}{(1 \times 3 \times 5 \times 7 \times 9)(1 \times 2 \times 3 \times 4)}\\
+    \end{align*}
+
+    The second solution is 
+    \begin{align*}
+        y_2 = \sum^\infty_{n=0} a_n x^{n+1/2} &= x^{1/2} \sum^\infty_{n=0} a_n x^n\\
+        &= x^{1/2} [a_0 + a_1 + a_2 + \cdots]\\
+        &= x^{1/2} \biggl[1 + \frac{x}{1 \times 3} + \frac{x^2}{(1\times 3 \times 5)(1 \times 2) 
+        } + \frac{x^3}{(1 \times 3 \times 5 \times 7) (1 \times 2 \times 3)} + \cdots\biggr]
+    \end{align*}
+    which can be written as 
+    \[
+        y_2 = x^{1/2} \biggl[1 + \sum_{n=1}^{\infty} \frac{x^n}{n! \> \prod_{i=1}^{n} (2n+1) }\biggr]
+    \]
+
+    By inspection, $y_1$ and $y_2$ are not scalar multiples, implies that they are linearly independent.
+    Therefore the general solution of Eq(1) is $y = c_1y_1 + c_2y_2$.
+\end{solution}
+
+\begin{example}
+    \begin{enumerate}
+        \item Show that
+        \[
+            \sum^\infty_{k=0} a_{k+1}x^k + \sum^\infty_{k=0} a_kx^{k+1} = a_1 + \sum^\infty_{k=1} (a_{k-1} +
+            a_{k+1})x^k
+        \]
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    
+\end{solution}
