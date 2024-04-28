@@ -248,6 +248,7 @@ All polynomials $P(x) = a_0 + a_1x + a_2x^2 + \cdots$ are analytic $\forall x \i
         &n = 2: &a_3 = \frac{a_2}{7 \times 3} = \frac{a_0}{(1 \times 3 \times 5 \times 7)(1\times 2 \times 3)}\\
         &n = 3: &a_4 
         = \frac{a_0}{(1 \times 3 \times 5 \times 7 \times 9)(1 \times 2 \times 3 \times 4)}\\
+        &\vdots &\vdots 
     \end{align*}
 
     The second solution is 
@@ -263,7 +264,107 @@ All polynomials $P(x) = a_0 + a_1x + a_2x^2 + \cdots$ are analytic $\forall x \i
     \]
 
     By inspection, $y_1$ and $y_2$ are not scalar multiples, implies that they are linearly independent.
-    Therefore the general solution of Eq(1) is $y = c_1y_1 + c_2y_2$.
+    Therefore the general solution of Eq(1) is $y = c_1y_1 + c_2y_2$, where $c_1$ and $c_2$ are 
+    arbitrary constants.
+\end{solution}
+
+\begin{remark}
+    In general, we may not get two linearly independent solutions. We are guaranteed by 
+    Frobenius theorem that thre is at least one solution in the form of 
+
+    \begin{equation}
+        y = \sum_{n=0}^{\infty} a_n (x-x_0)^n
+    \end{equation}
+
+    then we can use reduction of order to find for the 2nd linearly independent solution.
+\end{remark}
+
+\begin{example}
+    For the given DE:
+    \[
+        xy'' + 3y' - y = 0
+    \]
+    Given that one of its solution is 
+    \[
+        y_1 = \sum_{n=0}^{\infty} \frac{2}{n!\, (n+2)!}\, x^n = 1 + \frac{1}{3}x + \frac{1}{24}x^2 + \frac{1}{360}x^3 + \cdots
+    \]
+    Find the 2nd LI solution using reduction of order.
+\end{example}
+\begin{solution}
+    We write the original DE in standard form: $y" + p(x)y' + q(x)y = 0$, with $\displaystyle p(x) = \frac{3}{x}$.
+
+    \begin{align*}
+        \exp\big[{-\int p(x) \>dx}\big] &= \exp \big[{-\int -\frac{3}{x} \>dx}\big]\\
+        &= e^{-3 |x|}\\
+        &= \frac{1}{x^3}
+    \end{align*}
+
+    \begin{align*}
+        \frac{e^{-\int p(x) \> dx}}{y_1^2} 
+        = \frac{1}{x^3} \cdot \frac{1}{\biggl(1 + \frac{1}{3}x + \frac{1}{24}x^2 + \frac{1}{360}x^3 + \cdots\biggr)^2} \label{eq:1} \tag{a}
+    \end{align*}
+
+    To expand the squared series, we can apply the rule of multiplication for power series:
+
+    \begin{mdframed}
+        \subsubsection*{How to multiply two power series?}
+
+        If there are two power series such that $f(x) = \sum_{n=0}^{N}a_n (x-x_0)^n$, $g(x) = \sum_{n=0}^{N}b_n (x-x_0)^n$, then 
+        the multiplication of these two series are 
+
+        \[
+            f(x)g(x) = \sum_{n=0}^{N} c_n (x-x_0)^n
+        \]
+
+        where $c_n = a_0b_N + a_1b_{N-1} + a_2b_{N-2} + \cdots + a_Nb_0$.
+    \end{mdframed}
+    
+
+    In this case, $f(x) = g(x)$ with $a_0 = b+0 = 1$, $a_1 = b_1 = \frac{1}{3}$, $a_2 = b_2 = \frac{1}{24}$. 
+
+    \begin{align*}
+        &c_0 = a_0b_0 = 1\\
+        &c_1 = a_0b_1 + a_1b_0 = 1 \times \frac{1}{3} + \frac{1}{3} \times 1 = \frac{2}{3}\\
+        &c_2 = a_0b_2 + a_1b_1 + a_2b_0 = \frac{1}{24} + \frac{1}{9} + \frac{1}{24} = \frac{7}{36}\\
+        &c_3 = a_0b_3 + a_1b_2 + a_2b_1 + a_3b_0 = \frac{1}{360} + \frac{1}{72} + \frac{1}{72} = \frac{1}{360}
+        = \frac{1}{30}\\
+        &\vdots
+    \end{align*}
+
+    now we can continue to work on Eq\eqref{eq:1}.
+
+    \begin{align*}
+        \frac{e^{-\int p(x) \> dx}}{y_1^2} 
+        &= \frac{1}{x^3} \cdot \frac{1}{\biggl(1 + \frac{1}{3}x + \frac{1}{24}x^2 + \frac{1}{360}x^3 + \cdots\biggr)^2}\\
+        &= \frac{1}{x^3(c_0 + c_1\,x + c_2\,x^2 + c_3\,x^3 + \cdots)}\\
+        &= \frac{1}{x^3 \biggl(1 + \frac{2}{3}x + \frac{7}{36}x^2 + \frac{1}{30}x^3 + \cdots\biggr)} \label{eq:2} \tag{b}
+    \end{align*}
+
+    Using long division to expand Eq\eqref{eq:2}:
+    $$
+    \begin{array}{rl}
+        &\underline{\phantom{)} 1 - \frac{2}{3}x + \frac{1}{4}x^2 - \frac{19}{270}x^3 + \cdots}\\
+        1+\frac{2}{3}x + \frac{7}{36}x^3 + \cdots & \smash{)}1 \\[0.6em]
+        &\underline{\phantom{)} 1+\frac{2}{3}x + \frac{7}{36}x^3 + \cdots}\\[0.6em]
+        &\phantom{1+}-\frac{2}{3}x - \frac{7}{36}x^2 - \frac{1}{30}x^3 + \cdots\\[0.6em]
+        &\phantom{1+}-\underline{\frac{2}{3}x - \frac{4}{9}x^2 - \frac{7}{54}x^3 + \cdots}\\[0.6em]
+        &\phantom{1+-\frac{2}{3}x}\frac{1}{4}x^2 + \frac{13}{136}x^3 + \cdots\\[0.6em]
+        &\phantom{1+-\frac{2}{3}x}\underline{\frac{1}{4}x^2 + \frac{1}{6}x^3 + \cdots}\\[0.6em]
+        &\phantom{1+-\frac{2}{3}x \frac{1}{4}x^2}-\frac{19}{270}x^3 + \cdots
+    \end{array}$$
+
+    we obtained 
+    \begin{align*}
+        \frac{e^{-\int p(x) \> dx}}{y_1^2}
+        &= \frac{1}{x^3} \biggl(1 - \frac{2}{3}x + \frac{1}{4}x^2 - \frac{19}{270}x^3 + \cdots\biggr)\\
+        &= x^{-3} - \frac{2}{3}x^{-2} + \frac{1}{4}x^{-1} - \frac{19}{270} + \cdots
+    \end{align*}
+
+    by using reduction of order, we can find $y_2$ using formula
+
+    \begin{align*}
+        y_2 = \int \frac{e^{-\int p(x) \> dx}}{y_1^2} dx
+    \end{align*}
 \end{solution}
 
 \begin{example}
@@ -276,5 +377,9 @@ All polynomials $P(x) = a_0 + a_1x + a_2x^2 + \cdots$ are analytic $\forall x \i
     \end{enumerate}
 \end{example}
 \begin{solution}
-    
+    From LHS,
+    \begin{align*}
+        \text{LHS} = \sum^\infty_{k=0} a_{k+1}x^k + \sum^\infty_{k=0} a_kx^{k+1}
+        = \biggl( a_1 + \sum_{k=1}^{\infty} a_{k+1} x^k \biggr) + \sum_{k=0}^{\infty} a_k x^{k+1}
+    \end{align*}
 \end{solution}

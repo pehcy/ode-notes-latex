@@ -5,6 +5,7 @@
 \usepackage[most]{tcolorbox}
 \usepackage{thmtools}
 \usepackage{mathtools}
+\usepackage{mdframed}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -122,3 +123,7 @@ numbered=no
         \pld@Extend\pld@tempoly{\pld@monom}%
     \fi}
 \makeatother
+
+\newcommand\Mydiv[2]{%
+$\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
+        \overline{\enspace\strut#2}$}
