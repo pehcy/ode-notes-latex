@@ -372,6 +372,41 @@ a result of the multiplication.
     where $k$ is the constant of proportionality. 
     
     Given the initial amount $N(0) = 100$, and $N(50) = 75$.
+
+    \begin{enumerate}
+        \item The IVP is 
+            \[
+                \frac{dN}{dt} = kN, \quad N(0) = 100, \quad N(50) = 75
+            \]
+        
+            \textbf{Identify the DE: Separable, 1st-order, linear DE}
+
+            To solve the DE, we can use either integrating factor or by writting 
+            the DE in the form of $\frac{dN}{dt} + p(t)N = q(t)$.
+
+            \[IF = e^{\int p(t) dt} = e^{\int -k \> dt} = e^{-kt}\]
+
+            and we obtained 
+
+            \[
+                N(t) = 100 e^{\frac{1}{50} \ln(3/4)t} \quad \forall t \in [0, +\infty)
+            \]
+        
+        \item Let the half-life of isotope be $T$, and 
+            \[
+                N(T) = \frac{1}{2} N(0) = 50
+            \]
+
+            using the formula that we found on (a), 
+
+            \begin{align*}
+                N(T) = 100 e^{\frac{1}{50} \ln(3/4)T} = 50 &\Rightarrow 
+                e^{\frac{1}{50} \ln(3/4)T} = \frac{1}{2}\\
+                &\Rightarrow T = \frac{\ln (1/2)}{\displaystyle \frac{1}{50} \ln (3/4)} = 120.471042 \text{ years}
+            \end{align*}
+
+            which means this radioactive substance required roughly 120 years to decay to half of its mass.
+    \end{enumerate}
 \end{solution}
 
 \section{Substitution Method}

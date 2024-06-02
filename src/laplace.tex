@@ -1,0 +1,33 @@
+\chapter{Laplace Transform}
+
+\begin{example}
+    In the two-mesh network shown below, the switch is closed at $t = 0$ and the voltage source is given by
+    $V(t) = 150 \sin(1000t)$. Find the mesh currents $i_1$ and $i_2$.
+
+    \begin{center}
+        \begin{circuitikz}[european voltages] \draw
+            (0,0) to[sinusoidal voltage source=$V(t)$] (0,4)
+              to [short] ++ (1,0)  
+              to[cute closing switch] ++ (2,0)
+              to[R=10<\ohm>] ++ (2,0)       coordinate (a)
+              to[short] ++ (2,0)            coordinate (g)
+              to[R=5<\ohm>, *-] ++ (0,-2)   
+              to[short] ++ (0,-2)           coordinate (d)
+              (a) to[R=5<\ohm>, *-] ++ (0,-2)   coordinate (b)
+              (b) to[cute inductor=$0.01H$] ++ (0,-2)    coordinate (c)
+              (c) to[short, *-, i=$I_0$] (0,0)  
+              (d) to[short, *-] (c);
+              \node (a1) [below left=.25cm and .25cm of a] {};
+              \node (c2) [above left=.25cm and .25cm of c] {};
+              \node (c3) [left=.25cm of c2] {};
+    
+              \node (g1) [below left=.25cm and .25cm of g] {};
+              \node (d2) [above left=.25cm and .25cm of d] {};
+              \path[draw=red, thick,-Triangle] (a1) -- node[red, left] {$i_1$} (c2);
+              \path[draw=red, thick,-Triangle] (g1) -- node[red, left] {$i_2$} (d2);
+
+              \node [above right=1.25cm and .15cm of c] {$+$};
+              \node [above right=0.25cm and .15cm of c] {$-$};
+        \end{circuitikz}
+    \end{center}
+\end{example}
