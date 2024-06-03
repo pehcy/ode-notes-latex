@@ -1,12 +1,156 @@
 \chapter{Laplace Transform}
 
+\section{Partial Fraction}
+
 \begin{example}
-    In the two-mesh network shown below, the switch is closed at $t = 0$ and the voltage source is given by
+    Decompose the following fractions as a sum of partial fractions
+    \begin{enumerate}
+        \item $\displaystyle \frac{2x^2 - x + 4}{x^3 + 4x}$
+        \item $\displaystyle \frac{3x^2 -4x + 5}{(x+1)^2(x-2)}$
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    Evaluate $\mathcal{L}\{\sin \omega t \}$ and $\mathcal{L}\{\cos \omega t \}$, where 
+    $\omega = -\frac{1}{2}+i\frac{\sqrt{3}}{2} = e^{\frac{2}{3}\pi i}$ is a cubic root of unity.
+\end{example}
+\begin{solution}
+    From complex analysis, the De Moivre's theorem state that 
+
+    \[
+        \begin{cases}
+            e^{i\theta} = \cos \theta + i \sin \theta\\
+            e^{-i\theta} = \cos \theta - i \sin \theta\\
+        \end{cases}
+    \]
+
+    this implies that 
+    \[
+    \begin{cases}
+        e^{i\theta} + e^{-i\theta} = 2\cos \theta\\
+        e^{i\theta} - e^{-i\theta} = 2i \sin \theta\\
+    \end{cases}
+    \]
+\end{solution}
+
+\section{Convolution}
+
+\begin{example}
+    Solve the equation 
+    \[
+        y = t + \int_{0}^{t} y(\tau) \sin(t - \tau) \> d\tau
+    \]
+\end{example}
+\begin{solution}
+    The original equation can be rewrite as 
+    \[
+        y = t + y \star \sin t
+    \]
+
+    Applying Laplace Transform on the original equation, we have 
+    \[
+        Y = \frac{1}{s^2} + Y \cdot \frac{1}{s^2 + 1}
+    \]
+
+    Solving for $Y$, 
+
+    \begin{align*}
+        Y \biggl(1 - \frac{1}{s^2 + 1}\biggr) = \frac{1}{s^2} &\Rightarrow 
+        Y \biggl(\frac{s^2}{s^2 + 1}\biggr) = \frac{1}{s^2}\\
+        &\Rightarrow Y = \frac{s^2 + 1}{s^4}\\
+        &\Rightarrow Y = \frac{1}{s^2} + \frac{1}{s^4}
+    \end{align*}
+
+    Applying inverse Laplace transform on Y, we obtain
+    \begin{align*}
+        \mathcal{L}^{-1}\{Y\} = \mathcal{L}^{-1} \biggl\{\frac{1}{s^2} + \frac{1}{s^4}\biggr\} &\Rightarrow 
+        y = \mathcal{L}^{-1}\biggl\{\frac{1}{s^2}\biggr\} + \mathcal{L}^{-1}\biggl\{\frac{1}{s^4}\biggr\}\\
+        &\Rightarrow y = t + \frac{t^3}{3!} = t + \frac{1}{6}t^3
+    \end{align*}
+\end{solution}
+
+\begin{theorem}[First Shifting Theorem]
+    If $\mathcal{L}\{f(t) \} = F(s)$, then $\mathcal{L}\{e^{at} \, f(x)\} = F(s-a)$.
+\end{theorem}
+
+The Laplace Second Shifting Theorem, on the other hand, states that the
+ Laplace transform of the delayed function
+ equals the product of the Laplace transform of the original function and the shifted function.
+
+\section{More Properties of Laplace Transform}
+
+\subsection{Step function}
+
+\begin{definition}[Unit Step Function]
+    The step function $H(t - a)$ is defined to be
+    \begin{equation}
+        H(t - a) = \begin{cases}
+            0, & 0 \leq t < a\\
+            1, & t \geq a
+        \end{cases}
+    \end{equation}
+
+    the unit step function is also known as the Heaviside function.
+\end{definition}
+
+\begin{theorem}[Second Shifting Theorem]
+    Suppose     
+\end{theorem}
+
+\section{Tutorials}
+
+\begin{mdframed}
+    \vspace{-0.25cm}
+    \hspace{-0.25cm}
+    \begin{Exercise}
+        Express the fraction $\displaystyle \frac{x^2 + 7x - 3}{(x-2)(x^2 + 1)}$ as the sum of partial fractions.
+    \end{Exercise}
+
+    \begin{Exercise}
+        \begin{enumerate}
+            \item Show that $\sin 3x = 3 \sin x - 4\sin^3x$.
+            \item Hence, using the identity to evaluate $\mathcal{L}\{\sin^3 x\}$.
+        \end{enumerate}
+    \end{Exercise}
+
+    \begin{Exercise}
+        
+    \end{Exercise}
+
+    \begin{Exercise}
+        Solve the initial-value problem
+        \[
+            x'' + 16x = \cos(4t),\quad x(0) = 0,\quad x'(0) =1
+        \]
+    \end{Exercise}
+
+    \begin{Exercise}
+        Solve the equation
+        \[
+            y' + 4y + 5\int_{0}^{t} y \> dt = e^{-t}, \quad y(0) = 0
+        \]
+    \end{Exercise}
+
+    \begin{Exercise}
+        Solve the integral equation
+        \[
+            y(t) = e^{-t} - 2\int_{0}^{t} y(u) \cos(t-u) \> du
+        \]
+    \end{Exercise}
+
+    \begin{Exercise}
+        Find the Laplace transform of the periodic function shown in figure below.
+
+        \input{plots/lapl-01.tex}
+    \end{Exercise}
+
+    \begin{Exercise}
+        In the two-mesh network shown below, the switch is closed at $t = 0$ and the voltage source is given by
     $V(t) = 150 \sin(1000t)$. Find the mesh currents $i_1$ and $i_2$.
 
     \begin{center}
         \begin{circuitikz}[european voltages] \draw
-            (0,0) to[sinusoidal voltage source=$V(t)$] (0,4)
+            (0,0) to[sinusoidal voltage source=$V$] (0,4)
               to [short] ++ (1,0)  
               to[cute closing switch] ++ (2,0)
               to[R=10<\ohm>] ++ (2,0)       coordinate (a)
@@ -18,16 +162,17 @@
               (c) to[short, *-, i=$I_0$] (0,0)  
               (d) to[short, *-] (c);
               \node (a1) [below left=.25cm and .25cm of a] {};
-              \node (c2) [above left=.25cm and .25cm of c] {};
+              \node (c2) [above left=.25cm and 3.25cm of c] {};
               \node (c3) [left=.25cm of c2] {};
     
               \node (g1) [below left=.25cm and .25cm of g] {};
-              \node (d2) [above left=.25cm and .25cm of d] {};
-              \path[draw=red, thick,-Triangle] (a1) -- node[red, left] {$i_1$} (c2);
-              \path[draw=red, thick,-Triangle] (g1) -- node[red, left] {$i_2$} (d2);
+              \node (d2) [above left=.10cm and 2.75cm of d] {};
+              \path[draw=red, thick,-Triangle] (a1) |- node[red, left, yshift=2cm] {$i_1$} (c2);
+              \path[draw=red, thick,-Triangle] (g1) |- node[red, left, yshift=2cm] {$i_2$} (d2);
 
               \node [above right=1.25cm and .15cm of c] {$+$};
               \node [above right=0.25cm and .15cm of c] {$-$};
         \end{circuitikz}
     \end{center}
-\end{example}
+    \end{Exercise}
+\end{mdframed}

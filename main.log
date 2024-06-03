@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  2 JUN 2024 18:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  3 JUN 2024 16:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -863,6 +863,55 @@ Package: empheq 2017/03/31 v2.15 Emphasizing equations
 ) (/usr/share/texlive/texmf-dist/tex/latex/polynom/polynom.sty
 Package: polynom 2017/07/17 0.19 (CH,HA)
 \pld@currstage=\count359
+) (/usr/share/texlive/texmf-dist/tex/latex/exercise/exercise.sty
+Package: exercise 2014/10/20 v1.6 Exercise package (P.Pichaureau)
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\ExerciseSkipBefore=\skip137
+\ExerciseSkipAfter=\skip138
+\AnswerSkipBefore=\skip139
+\AnswerSkipAfter=\skip140
+\Exesep=\skip141
+\Exetopsep=\skip142
+\Exeparsep=\skip143
+\Exepartopsep=\skip144
+\Exeleftmargin=\skip145
+\Exerightmargin=\skip146
+\Exelabelwidth=\skip147
+\Exelabelsep=\skip148
+\ExerciseBefore=\skip149
+\QuestionBefore=\skip150
+\subQuestionBefore=\skip151
+\subsubQuestionBefore=\skip152
+\QuestionIndent=\skip153
+\subQuestionIndent=\skip154
+\subsubQuestionIndent=\skip155
+\c@Exercise=\count360
+\c@Answer=\count361
+\c@ExePart=\count362
+\c@Question=\count363
+\c@subQuestion=\count364
+\c@subsubQuestion=\count365
+\c@savedQuestion=\count366
+\c@savedsubQuestion=\count367
+\c@savedsubsubQuestion=\count368
+\@QuestionLevel=\count369
+\@Exercisebox=\box117
+\all@Exercisebox=\box118
+\temp@Exercisebox=\box119
+\all@Answerbox=\box120
+\temp@Answerbox=\box121
+\ExerciseDifficulty=\count370
+\QuestionDifficulty=\count371
+\subQuestionDifficulty=\count372
+\subsubQuestionDifficulty=\count373
+\ExePartDifficulty=\count374
+\@Answerbox=\box122
+\colonnesLevel=\count375
+\tempskipa=\skip156
+\tempskipb=\skip157
+\@savedmathindent=\skip158
 )) (./polydiv.sty
 Package: polydiv 
 ) (/usr/share/texlive/texmf-dist/tex/latex/import/import.sty
@@ -923,16 +972,16 @@ LaTeX Font Info:    ... okay on input line 9.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count360
+\scratchcounter=\count376
 \scratchdimen=\dimen336
-\scratchbox=\box117
-\nofMPsegments=\count361
-\nofMParguments=\count362
+\scratchbox=\box123
+\nofMPsegments=\count377
+\nofMParguments=\count378
 \everyMPshowfont=\toks54
-\MPscratchCnt=\count363
+\MPscratchCnt=\count379
 \MPscratchDim=\dimen337
-\MPnumerator=\count364
-\makeMPintoPDFobject=\count365
+\MPnumerator=\count380
+\makeMPintoPDFobject=\count381
 \everyMPtoPDFconversion=\toks55
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -940,7 +989,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count366
+\c@lstlisting=\count382
 
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
@@ -948,7 +997,7 @@ Package pgfplots notification 'compat/show suggested version=true': document has
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 9.
-\Hy@linkcounter=\count367
+\Hy@linkcounter=\count383
  (./src/existence.tex
 Chapter 1.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
@@ -965,33 +1014,47 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Chapter 2.
 [4
 
-] [5] [6] [7] [8] [9] [10]) (./src/power.tex [11]
+] [5] [6] [7] [8] [9] [10]
+Package mdframed Info: mdframed works in twoside mode on input line 517.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 517.
+ [11]) (./src/power.tex [12]
 Chapter 3.
-[12
+[13
 
-] [13] [14] [15] [16]
+] [14] [15] [16] [17]
 Package mdframed Info: mdframed works in twoside mode on input line 310.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 310.
- [17]) (./src/laplace.tex [18]
+ [18]) (./src/laplace.tex [19]
 Chapter 4.
-) [19
+[20
 
-] (./main.aux) ) 
+]
+Package mdframed Info: mdframed works in twoside mode on input line 103.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 103.
+ (./src//plots/lapl-01.tex)
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 178.
+ [21]) [22] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 56681 strings out of 478287
- 1527667 string characters out of 5849289
- 2281482 words of memory out of 5000000
- 74086 multiletter control sequences out of 15000+600000
+ 57212 strings out of 478287
+ 1536585 string characters out of 5849289
+ 2309619 words of memory out of 5000000
+ 74607 multiletter control sequences out of 15000+600000
  484534 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  114i,13n,118p,779b,2265s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on main.pdf (19 pages, 361405 bytes).
+Output written on main.pdf (22 pages, 375310 bytes).
 PDF statistics:
- 212 PDF objects out of 1000 (max. 8388607)
- 123 compressed objects within 2 object streams
+ 221 PDF objects out of 1000 (max. 8388607)
+ 129 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -130,3 +130,11 @@ numbered=no
 \newcommand\Mydiv[2]{%
 $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
         \overline{\enspace\strut#2}$}
+
+\usepackage[lastexercise,answerdelayed]{exercise}
+\counterwithin{Exercise}{section}
+\counterwithin{Answer}{section}
+\newcommand{\AtBeginExerciseHeader}{\hspace{-0.25cm}}
+\renewcommand{\ExerciseHeader}{\AtBeginExerciseHeader \textbf{\ExerciseHeaderDifficulty \ExerciseName~\ExerciseHeaderNB} \quad }
+%\renewcommand{\ExerciseHeader}{\textbf{\ExerciseName~\ExerciseHeaderNB}\quad}
+\renewcommand{\AnswerHeader}{\AtBeginExerciseHeader \textbf{\AnswerName~\ExerciseHeaderNB}\smallskip\newline}
