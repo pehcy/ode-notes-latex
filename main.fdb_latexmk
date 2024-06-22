@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1717402651 "/home/pehcy/github/ode-notes/main.tex" "main.pdf" "main" 1717402653
+["pdflatex"] 1719062183 "/home/pehcy/github/ode-notes/main.tex" "main.pdf" "main" 1719062184
   "/etc/texmf/web2c/texmf.cnf" 1703329587 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/pehcy/github/ode-notes/main.tex" 1717320109 392 56ed334e02132ecd22b4bd0c5fa8b69e ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -314,17 +314,18 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1703329600 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710514451 2799173 3954c96e5880be46ff01b5202980efaf ""
-  "main.aux" 1717402652 15405 5b12f3d20ff7958b1a9bdd311d801cec "pdflatex"
+  "main.aux" 1719062184 17908 b6c27af139584f98e51b746241214160 "pdflatex"
   "main.tex" 1717320109 392 56ed334e02132ecd22b4bd0c5fa8b69e ""
   "polydiv.sty" 1703704554 3092 37fa8fcc0035d5f518729e86268a110b ""
   "src//plots/chpt4-01.tex" 1703485638 1196 085af01c3a2ac7c24602697c57d403d4 ""
   "src//plots/chpt4-02.tex" 1703666405 1688 45569e5662fc59408e70418f0adc3aed ""
   "src//plots/lapl-01.tex" 1717402651 1306 672bb16d823e3aa3cbdfe39980d7bf08 ""
+  "src//plots/lapl-dirac.tex" 1719061672 976 bd497761e205970607b06bc78cfe3078 ""
   "src/existence.tex" 1703934690 4186 57c98d38dfbce39920a11f3808298733 ""
-  "src/laplace.tex" 1717402034 5622 52ebd47f2ea9f89afe29692a1abf407a ""
+  "src/laplace.tex" 1719062183 11801 a6babcb5bec8949f7c9413ae6f3962cf ""
   "src/power.tex" 1714321989 14057 3bf3604129606c9af29b425b0790ad56 ""
   "src/solutions.tex" 1717339888 18358 18924383ac1a71cf0898b5be438344a0 ""
-  "styles.sty" 1717331985 4187 33041b6efb44ec59886bb7ca458698ec ""
+  "styles.sty" 1719053663 4231 987d2f04a4a856b0d85eec390939f27e ""
   (generated)
   "main.aux"
   "main.log"

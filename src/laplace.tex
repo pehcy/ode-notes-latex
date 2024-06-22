@@ -10,6 +10,16 @@
     \end{enumerate}
 \end{example}
 
+\section{Laplace Transform}
+    \begin{definition}[Laplace Transform]
+        Let $f(t)$ be a function defined for all $t \geq 0$. The Laplace Transform (LT) of 
+        $f(t)$ is defined by 
+
+        \begin{equation}
+            \mathcal{L}\{ f(t)\} = \int_{0}^{+\infty} e^{-st}\,f(t)\> dt = \lim_{N \to +\infty} \int_{0}^{N} e^{-st}\,f(t)\> dt
+        \end{equation}
+    \end{definition}
+
 \begin{example}
     Evaluate $\mathcal{L}\{\sin \omega t \}$ and $\mathcal{L}\{\cos \omega t \}$, where 
     $\omega = -\frac{1}{2}+i\frac{\sqrt{3}}{2} = e^{\frac{2}{3}\pi i}$ is a cubic root of unity.
@@ -31,6 +41,105 @@
         e^{i\theta} - e^{-i\theta} = 2i \sin \theta\\
     \end{cases}
     \]
+
+    We let $\theta = \omega t$, 
+
+    \begin{align*}
+        \mathcal{L} \{ \cos \omega t \} &= \frac{1}{2} [ \mathcal{L} \{e^{i\omega t}\} + \mathcal{L} \{e^{-i\omega t}\} ]\\
+        &= \frac{1}{2} \biggl[\frac{1}{s - i\omega} + \frac{1}{s - (-i\omega)}\biggr]\\
+        &= \frac{1}{2} \biggl[\frac{1}{s - i\omega} + \frac{1}{s + i\omega}\biggr]\\
+        &= \frac{1}{2} \frac{(s + i\omega) + (s - i\omega)}{(s - i\omega)(s + i\omega)}\\
+        &= \frac{s}{s^2 - (i\omega^2)}\\
+        &= \frac{s}{s^2 + \omega^2}
+    \end{align*}
+
+\end{solution}[Behavior of $F(s)$]
+    
+\subsection{Inverse Laplace Transforms}  
+Consider $F(s)$ represents the Laplace transform of a function $f(t)$, that is, $F(s) = \mathcal{L}\{f(t) \}$.
+we then said that $f(t)$ is the inverse Laplace transform of $F(s)$ and we write
+
+\begin{equation}
+    f(t) = \mathcal{L}^{-1} \{F(s)\}
+\end{equation}
+
+that is, the original function $f(t)$ itself is the differentiation of the Laplace transform.
+
+\begin{theorem}[Differentiation of Transform]
+    Given the transform $F(s)$ to be
+    \begin{equation}
+        \mathcal{L}\{f(t)\} = F(s) = \int_{0}^{+\infty} e^{-st}\,f(t)\> dt 
+    \end{equation}
+    then the differentiation of transform is 
+    \begin{equation}
+        \frac{dF}{ds} = \int_{0}^{+\infty} (-t\,f(t))\, e^{-st} \>dt = \mathcal{L} \{-t\, f(t)\}
+    \end{equation}
+\end{theorem}
+
+\begin{corollary}
+    The inverse transform of $F(s)$ can be write as
+    \begin{equation}
+        f(t) = - \frac{1}{t} \mathcal{L}^{-1} \{F'(s)\}
+    \end{equation}
+\end{corollary}
+
+As with Laplace transforms, we've got the following fact to help us take the inverse transform.
+
+\begin{theorem}[Linearity of Inverse Laplace Transforms]
+    Given two Laplace transforms $F(s)$ and $G(s)$ then
+    \begin{equation}
+        \mathcal{L}^{-1} \{aF(s) + bG(s)\} = a\,\mathcal{L}^{-1} \{F(s)\} + b\, \mathcal{L}^{-1} \{G(s)\}
+    \end{equation}
+
+    for any constants $a$ and $b$.
+\end{theorem}
+
+\begin{example}
+    Solve the following IVP problem:
+    
+    \[
+        \begin{cases}
+            y'' + 2ty' - 4y = 1\\
+            y(0) = y'(0) = 0
+        \end{cases}
+    \]
+\end{example}
+\begin{solution}
+    Applying Laplace transform to the DE, we have
+    \begin{align*}
+        &[s^2Y - sy(0) - y'(0)] - 2\biggl(s\frac{dY}{ds} + Y \biggr) - 4Y = \frac{1}{s}\\
+        &s^2Y - 2s\frac{dY}{ds} - 6Y = \frac{1}{s}\\
+        &-2s \frac{dY}{ds} + (s^2 - 6)Y = \frac{1}{s}\\
+        &\frac{dY}{ds} + \frac{6-s^2}{2s} Y = - \frac{1}{2s^2} \label{eq:lpl41} \tag{{\color{red} $\bigtriangleup$}}
+    \end{align*}
+
+    upon transform, it now become an 1st-order DE. We further use the integrating factor technique 
+    to solve this problem.
+
+    \[
+    IF = e^{\int p(s)\> ds} = \exp \biggl\{\int \frac{6 - s^2}{2s}\> ds \biggr\} = s^3\, e^{-s^2/4}
+    \]
+
+    multiply IF with \eqref{eq:lpl41},
+
+    \begin{align*}
+        \frac{d}{ds} \biggl(Ys^2 e^{-s^2/4}\biggr) &= -\frac{s}{2}\, e^{-s^2/4}\\
+        Ys^2 e^{-s^2/4} &= \int -\frac{s}{2}\, e^{-s^2/4} \> ds = e^{-s^2/4} + C & \text{where } C \text{ is a constant}\\
+        Y &= \frac{1}{s^3} + \frac{Ce^{s^2/4}}{s^3} \label{eq:lpl41b} \tag{{\color{cyan} $\bullet$}}
+    \end{align*}
+
+    As $s \to \infty$, we calculate the limit of $Y(s)$ (use L'Hospital Rule to verify)
+
+    \[
+        \lim_{s \to +\infty} Y = \lim_{s \to +\infty} \biggl(\frac{1}{s^3} + \frac{Ce^{s^2/4}}{s^3}\biggr) = 0
+    \]
+
+    if and only if $C = 0$. Thus
+
+    \[
+        Y = \frac{1}{s^3} \quad \Rightarrow y = \frac{t^2}{2!} = \frac{1}{2}t^2
+    \]
+
 \end{solution}
 
 \section{Convolution}
@@ -72,6 +181,13 @@
 \begin{theorem}[First Shifting Theorem]
     If $\mathcal{L}\{f(t) \} = F(s)$, then $\mathcal{L}\{e^{at} \, f(x)\} = F(s-a)$.
 \end{theorem}
+\begin{proof}
+    \[
+        \mathcal{L}\{e^{at} \, f(x)\} = \int_{0}^{+\infty} e^{-st}\, e^{at}\, f(t)\> dt = \int_{0}^{+\infty} e^{-(s-a)t}\, f(t)\> dt = F(s-a)
+    \]
+
+    which has been shown.
+\end{proof}
 
 The Laplace Second Shifting Theorem, on the other hand, states that the
  Laplace transform of the delayed function
@@ -97,6 +213,75 @@ The Laplace Second Shifting Theorem, on the other hand, states that the
     Suppose     
 \end{theorem}
 
+\subsection{Dirac Delta function}
+
+A unit impulse function is a function that is "on" for a short period and 0 ("off") otherwise
+
+\input{plots/lapl-dirac.tex}
+
+mathematically,
+
+\begin{equation}
+    \delta_a(t - t_0) = \begin{cases}
+        0, & 0 \leq t_0 < t_0 - a\\
+        \frac{1}{2a}, & t_0 - a \leq t_0 < t_0 + a\\
+        0, & t_0 \geq t_0 + a
+    \end{cases}
+\end{equation}
+
+The unit impulse function has the property 
+
+\begin{equation}
+    \int_{0}^{+\infty} \delta_a(t - t_0) \> dt = 1
+\end{equation}
+
+the limit of this function as $a \to 0$ is the Dirac Delta function. 
+
+\begin{definition}[Dirac Delta function]
+    The Dirac Delta function is defined as 
+    \begin{equation}
+        \delta(t - a) = \lim_{k \to 0^+} f_k(t) = \begin{cases}
+           +\infty, & \text{if } t = a\\
+           0, & \text{if } t \neq a
+        \end{cases}
+    \end{equation}
+
+    where 
+    \begin{equation}
+        f_k(t) = \begin{cases}
+            \displaystyle \frac{1}{k}, & \text{if } a \leq t \leq a+k\\[0.75em]
+            0, & \text{otherwise}
+        \end{cases}
+    \end{equation}
+\end{definition}
+
+\begin{example}
+    Solve the IVP problem:
+    \[
+        y'' + 2y' + 5y = 25t - \delta(t - \pi), \quad y(0) = -2, \quad y'(0) = 5
+    \]
+    where $\delta(t)$ is known as Dirac delta function.
+\end{example}
+
+\section{Periodic Function}
+
+\begin{definition}[Periodic function]
+    The function $f$ is said to be periodic with period $p > 0$, if $f(t + p) = f(t)$ 
+    for all $t \in \text{Domain } f$.
+\end{definition}
+
+For example, $\sin(t + 2\pi) = \sin(t)$, so the function $\sin(t)$ is a periodic function 
+with period of $2\pi$.
+
+\begin{theorem}[Laplace Transform of Periodic Function]
+    Suppose $\mathcal{L}\{f(t)\}$ exists and $\exists \hat{\tau} > 0$ s.t. $f(t + \hat{\tau}) = f(t)$ for all 
+    $t \geq 0$, then 
+
+    \begin{equation}
+        \mathcal{L}\{f(t)\} = \frac{1}{1 - e^{-st}} \int_{0}^{\hat{\tau}} e^{-st}\, f(t)\> dt
+    \end{equation}
+\end{theorem}
+
 \section{Tutorials}
 
 \begin{mdframed}
@@ -114,7 +299,7 @@ The Laplace Second Shifting Theorem, on the other hand, states that the
     \end{Exercise}
 
     \begin{Exercise}
-        
+        Find $\displaystyle \mathcal{L} \biggl\{\frac{}{}\biggr\}$
     \end{Exercise}
 
     \begin{Exercise}

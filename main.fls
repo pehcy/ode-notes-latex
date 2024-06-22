@@ -1351,6 +1351,10 @@ INPUT ./src/laplace.tex
 INPUT src/laplace.tex
 INPUT ./src/laplace.tex
 INPUT src/laplace.tex
+INPUT ./src//plots/lapl-dirac.tex
+INPUT src//plots/lapl-dirac.tex
+INPUT ./src//plots/lapl-dirac.tex
+INPUT src//plots/lapl-dirac.tex
 INPUT ./src//plots/lapl-01.tex
 INPUT src//plots/lapl-01.tex
 INPUT ./src//plots/lapl-01.tex
