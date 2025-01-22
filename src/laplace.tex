@@ -128,7 +128,7 @@ As with Laplace transforms, we've got the following fact to help us take the inv
         Y &= \frac{1}{s^3} + \frac{Ce^{s^2/4}}{s^3} \label{eq:lpl41b} \tag{{\color{cyan} $\bullet$}}
     \end{align*}
 
-    As $s \to \infty$, we calculate the limit of $Y(s)$ (use L'Hospital Rule to verify)
+    As $s \to \infty$, we calculate the limit of \eqref{eq:lpl41b} (use L'Hospital Rule to verify)
 
     \[
         \lim_{s \to +\infty} Y = \lim_{s \to +\infty} \biggl(\frac{1}{s^3} + \frac{Ce^{s^2/4}}{s^3}\biggr) = 0
@@ -235,7 +235,8 @@ The unit impulse function has the property
     \int_{0}^{+\infty} \delta_a(t - t_0) \> dt = 1
 \end{equation}
 
-the limit of this function as $a \to 0$ is the Dirac Delta function. 
+the limit of this function as $a \to 0$ is the Dirac Delta function. Note that 
+$\delta(t - a)$ is not a proper function.
 
 \begin{definition}[Dirac Delta function]
     The Dirac Delta function is defined as 
@@ -260,8 +261,44 @@ the limit of this function as $a \to 0$ is the Dirac Delta function.
     \[
         y'' + 2y' + 5y = 25t - \delta(t - \pi), \quad y(0) = -2, \quad y'(0) = 5
     \]
-    where $\delta(t)$ is known as Dirac delta function.
+    where $\delta$ is known as Dirac Delta function.
 \end{example}
+\begin{solution}
+    Applying Laplace transform on the original DE, we have
+
+    \begin{align*}
+        [s^2Y - sy(0) - y'(0)] + 2[sY - y(0)] + 5Y &= \frac{25}{s^2} - e^{-\pi s}\\
+        s^2 + 2s - 5 + 2[sY + 2] + 5Y = \frac{25}{s^2} - e^{-\pi s}
+    \end{align*} 
+
+    Solving for $Y$, 
+    \begin{align*}
+        &(s^2 + 2s + 5)Y = \frac{25}{s^2} - e^{-\pi s} - 2s + 1\\
+        &Y = \frac{25}{s^2(s^2+2s+5)} - \frac{e^{-\pi s}}{s^2 + 2s + 5} + \frac{1-2s}{s^2 + 2s +5}\\
+        &Y = \frac{5}{s^2} - \frac{2}{s} - \frac{e^{-\pi s}}{s^2 + 2s + 5}\\
+        &Y = \frac{5}{s^2} - \frac{2}{s} - e^{-\pi s}\, F(s) \label{eq:lpl42} \tag{{\color{red} $\diamond$}}
+    \end{align*}
+
+    Notice that $F(s)$ can be simplify for ease of inverse transformation,
+
+    \begin{align*}
+        F(s) = \frac{1}{s^2 + 2s + 5} &= \frac{1}{(s^2 + 2s + 2) + 2}\\
+        &= \frac{1}{(s + 1)^2 + 1}\\
+        &= \frac{1}{2} \biggl[\frac{2}{(s + 1)^2 + 2^2}\biggr]\\
+    \end{align*}
+
+    inverting $F(s)$ will obtain $f(t) = \displaystyle \frac{1}{2} e^{-t} \sin(2t)$. 
+
+    Furthermore, we again invert \eqref{eq:lpl42},
+    \begin{align*}
+        y &= 5t - 2 - f(t - \pi)\, H(t - \pi)\\
+        &= 5t - 2 - \frac{1}{2}e^{-(t-\pi)} \sin 2(t-\pi)\, H(t - \pi)\\
+        &= 5t - 2 - \frac{1}{2}e^{-(t-\pi)} [\sin 2t \cos \pi - \cos 2t \sin 2\pi]\, H(t - \pi)\\
+        \Rightarrow y &= 5t - 2 - \frac{1}{2}e^{-(t-\pi)} \sin(2t) \, H(t - \pi)
+    \end{align*}
+
+    which this is the solution for the DE.
+\end{solution}
 
 \section{Periodic Function}
 
