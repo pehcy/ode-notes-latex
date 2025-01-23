@@ -243,6 +243,13 @@ is given by $dF = 0$ or $F(x,y) = C$, $C$ is a constant.
     constant.
 \end{proof}
 
+\begin{example}
+    Solve the DE 
+    \[
+        3x(xy - 2)\> dx + (x^3 + 2y)\> dy = 0
+    \]
+\end{example}
+
 \section{Making an Equation Exact: Integrating Factors}
 
 Sometimes it is impossible to transform a nonexact DE that into an exact 
@@ -411,6 +418,47 @@ a result of the multiplication.
 
 \section{Substitution Method}
 
+In this section, we will use an appropriate substitution to transform a given ODE into one that could be solved by 
+one of the standard methods.
+
+\begin{theorem}[Substitution method]
+    The substitution 
+    \begin{equation}
+        u = ax + by + c, b\neq 0 \label{eqn:r-1}
+    \end{equation}
+    
+    transforms the equation 
+    \begin{equation}
+        \frac{dy}{dx} = f(ax + by + c) \label{eqn:r-2}
+    \end{equation}
+
+    into a separable equation.
+\end{theorem}
+
+\begin{proof}
+    Consider a differential equation of the form \eqref{eqn:r-1}
+
+    Let 
+    \begin{equation}
+        u = ax + by + c
+    \end{equation}
+
+    Taking the drivative with respect to $x$ we obtained 
+    \begin{equation}
+        \frac{du}{dx} = a + b \frac{dy}{dx} \quad \Rightarrow \frac{dy}{dx} = \frac{1}{b} \biggl(a - \frac{du}{dx}\biggr)
+    \end{equation}
+
+    Substituting this result back to Eq\eqref{eqn:r-1} 
+    \begin{equation}
+        \frac{1}{b} \biggl(a - \frac{du}{dx}\biggr) = f(u)
+    \end{equation}
+
+    which is clearly a separable equation:
+    \begin{equation}
+        \frac{1}{a + bf(u)}\> du = dx
+    \end{equation}
+\end{proof}
+
 \begin{example}
     Use an appropriate substitution to solve 
     \[
@@ -450,14 +498,29 @@ Thus, $3x - 3y +1 = \arctan(3x + C)$ is the solution of the original DE.
         &\Rightarrow 4u = (x + C)^2\\
         &\Rightarrow 4(y - 2x + 3) = (x + C)^2
     \end{align*}
+
+    and thus the solution is 
+    \[
+        y = \frac{(x + C)^2}{4} + 2x - 3
+    \]
 \end{solution}
 
 \section{Homogeneous Equation}
 
 A first-order DE $y' = f(x,y)$ is homogeneous if $f(x,y)$ can be expressed as a function 
-of the ratio $y/x$ alone.
+of the ratio $y/x$ alone. In other words, the DE 
 
-\begin{theorem}
+\begin{equation}
+    y' = f(x,y)
+\end{equation}
+
+is homogeneous if it can be written in the form 
+
+\begin{equation}
+    \frac{dy}{dx} = F \biggl( \frac{y}{x}\biggr)
+\end{equation}
+
+\begin{theorem}[Substitution method for homogeneous equation]
     The substitution $v = y/x$ (or $v = x/y$) will reduce the homogeneous DE 
     \begin{equation}
         \frac{dy}{dx} = F\biggl(\frac{y}{x}\biggr)
@@ -501,6 +564,57 @@ of the ratio $y/x$ alone.
     \end{align*}
 
     is the general solution of the original DE.
+\end{solution}
+
+\begin{example}[Bernoulli differential equation]
+    A first-order differential equation of the form 
+
+    \[
+        y' + P(x)y = Q(x)y^n
+    \]
+
+    where $n$ is any real number, is called a \textbf{Bernoulli differential equation}.
+
+    For $n = 0, 1$, the equation is linear. Otherwise it is nonlinear.
+
+\end{example}
+\begin{solution}
+    \begin{enumerate}
+        \item For $n \geq 2$, consider the equation 
+            \begin{equation}
+                y' + P(x)y = Q(x)y^n \label{eqn:r-3}
+            \end{equation}
+
+            Multiply \eqref{eqn:r-3} by $(1-n)y^{-n}$, we have 
+
+            \[
+                (1-n)y^{-n}y' + (1-n)P(x)y^{1-n} = (1-n)Q(x)
+            \]
+
+            using the following substitution
+            \[
+                \begin{cases}
+                    w = y^{1-n}\\[0.5em]
+                    \displaystyle \frac{dw}{dx} = (1-n)y^{(1-n)-1}\, \frac{dy}{dx} = (1-n)y^{-n}\, \frac{dy}{dx}
+                \end{cases}
+            \]
+
+            The original DE is now a linear first-order separable DE.
+            \begin{align*}
+                \frac{dw}{dx} + (1-n)w P(x) &= (1-n)Q(x)\\
+                \frac{dw}{dx} &= (1-n)[Q(x) - wP(x)] 
+            \end{align*}
+
+        \item A Bernoulli equation with $n=2$ is 
+            \begin{equation}
+                xy' + y = -xy^2
+            \end{equation}
+
+            which can be rewrite into 
+            \begin{equation}
+                y' + \frac{1}{x} y = - y^2 
+            \end{equation}
+    \end{enumerate}
 \end{solution}
 
 \section*{Summary: Solving 1st order DE}
