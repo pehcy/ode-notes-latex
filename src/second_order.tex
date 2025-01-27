@@ -1,0 +1,366 @@
+\chapter{Second-order differential equations}
+
+We now consider what constitutes the so-called general solution of a homogeneous linear DE. To understand this, 
+we first introduce the concepts of linear dependence and linear independent.
+
+\section{Linear dependence and linear independence}
+
+\begin{definition}[Linear independence]
+    The functions $f_1, f_2, \ldots, f_n$ are said to be linearly independent on an interval $I$ if there 
+    exist constants $c_1, c_2, \ldots, c_n$ such that 
+
+    \begin{equation}
+        c_1 f_1(x) + c_2 f_2(x) + \cdots + c_n f_n(x) = 0
+    \end{equation}
+\end{definition}
+
+Consider 
+\begin{equation}
+    S = \{ y : y'' + p(x)y' + q(x)y = 0 \}
+\end{equation}
+
+is a vector space with dimension 2. If $y_1$ and $y_2$ are two linearly 
+independent solution to the HLDE, then its general solution is 
+
+\begin{equation}
+    y(x) = c_1 y_1(x) + c_2 y_2(x)
+\end{equation}
+
+where $c_1$ and $c_2$ are constants. The set of solution $\{y_1, y_2 \}$ is 
+called the fundamental set of  solutions (a basis of $S$) to the HLDE.
+
+To show that $\{y_1, y_2 \}$ is a fundamental set of solutions of HLDE. We can perform the Wronskian test, 
+by Wronskian test we must show they are both \textbf{solutions} and \textbf{linearly independent}.
+
+\begin{definition}[Wronskian]
+    The \textbf{Wronskian} of two differential functions, said $f(x)$ and $g(x)$ 
+    is the determinant
+
+    \begin{equation}
+        W(f(x), g(x)) = \begin{vmatrix}
+            f(x) & g(x)\\ f'(x) & g'(x) 
+        \end{vmatrix} = f(x)\,g'(x) - g(x)\, f'(x)
+    \end{equation}
+\end{definition}
+
+\begin{remark}
+    If Wronskian is nonzero, then the solutions $y_1$ and $y_2$ are linearly independent. 
+    Otherwise, they are linearly dependent.
+\end{remark}
+
+\begin{example}
+    Given the equation 
+
+    \begin{equation}
+        y'' - 4y = 0 \label{eqn:so-2}
+    \end{equation}
+
+    \begin{enumerate}
+        \item Show that 
+            \[
+                y_1 = e^{2x}, \quad y_2 = e^{-2x}
+            \]
+            form a fundamental set of solutions of \eqref{eqn:so-2} on $\mathbb{R}$.
+    \end{enumerate}
+\end{example}
+
+\section{Second-order HLDE with constant coefficients}
+
+\begin{definition}
+    A homogeneous 2nd order linear DE with constant coefficients has the form 
+
+    \begin{equation}
+        ay'' + by' + cy = 0 \label{eqn:so-1}
+    \end{equation}
+
+    where $a \neq 0$, $b$ and $c$ are constants.
+\end{definition}
+
+$ar^2 + br + c = 0$ or $P(r) = 0$ is called the characteristic equation (or auxiliary equation) 
+The characteristic equation is always quadratic, and its two roots are
+
+\begin{equation}
+    r_1 = \frac{-b +\sqrt{b^2-4ac}}{2a}, \quad r_2 = \frac{-b -\sqrt{b^2-4ac}}{2a}
+\end{equation}
+
+Similar to what we had learned in quadratic equation, there are \textbf{three} possible forms 
+for the general solution of \eqref{eqn:so-1} depending on the nature of the characteristic roots 
+$r_1$ and $r_2$.
+
+\begin{example}
+    Find a general solution to
+    \begin{enumerate}
+        \item $2y'' - 2y' - 5y = 0$
+        \item $y'' + 8y' + 16y = 0$
+        \item $y'' + 2y' + 4y = 0$
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}
+        The DEs above can be solve using the method of characteristic equation. 
+
+        \item The roots of $2r^2 - 2r - 5 = 0$ are 
+            \[
+                r = \frac{-(-2) \pm \sqrt{(-2)^2 - 4(2)(-15)}}{2(2)} = \fbox{$\displaystyle \frac{1 \pm \sqrt{11}}{2}$}
+            \]
+            The two roots are real and distinct. Thus the general solution is 
+
+            \[
+                y = c_1 \exp \biggl[ \frac{(1 + \sqrt{11})}{2} \,x \biggr] + c_2 \exp \biggl[ \frac{(1 - \sqrt{11})}{2} \,x\biggr]
+            \]
+
+            where $c_1$ and $c_2$ are arbitrary constants.
+
+        \item The characteristic equation is 
+            \[
+                r^2 + 8r + 16 = (r + 4)^2 = 0
+            \]
+
+            On solving, it has root $r = -4$ with multiplicity 2.
+            Thus the general solution is 
+
+            \[
+                y = c_1e^{-4x} + c_2 \,xe^{-4x}
+            \]
+
+            where $c_1$ and $c_2$ are arbitrary constants.
+
+        \item The characteristic equation $r^2 + 2r + 4 = 0$ has complex roots 
+            \[
+                r = \frac{-2 \pm \sqrt{2^2 - 4(1)(4)}}{2(1)} = \fbox{$-1 \pm \sqrt{3} i$}\>, \quad \text{with } i = \sqrt{-1}
+            \]
+
+            Thus, the general solution is 
+            \[
+                y = e^{-x}[c_1 \cos(\sqrt{3}x) + c_2 \sin(\sqrt{3}x)]
+            \]
+
+            where $c_1$ and $c_2$ are arbitrary constants.
+    \end{enumerate}
+\end{solution}
+
+
+\subsection{Non-homogeneous DE with constant coefficients}
+
+The general solution of non-homogeneous DE
+
+\begin{equation}
+    ay'' + by' + cy = g(x)
+\end{equation}
+is 
+\begin{equation}
+    y = y_h + y_p
+\end{equation}
+where $y_p$ is the general solution of the associated homogeneous equation 
+\begin{equation}
+    ay'' + by' + cy = 0
+\end{equation}
+
+\section{Method of undetermined coefficients}
+
+\begin{example}
+    Solve the initial value problem
+    \[
+        y'' + 4y = 12 \cos 2x, \quad y(0) = 3,\quad y'(0) = 4
+    \]
+\end{example}
+
+\begin{solution}
+    Consider the DE 
+
+    \begin{equation*}
+        y'' + 4y = 12 \cos 2x   \label{eq:sod2} \tag{{\color{red} $\bigstar$}}
+    \end{equation*}
+
+    The original DE is a second-order non-homogeneous DE. The general solution should be 
+
+    \[
+        y = y_p + y_h
+    \]
+
+    We first finding the complementary solution $y_h$ using the method of 
+    characteristic equation
+
+    \begin{equation*}
+        r^2 + 4 = 0 \Rightarrow r = \pm 2i
+    \end{equation*}
+
+    the general solution for $y_h$ is 
+
+    \begin{equation*}
+        y_h = c_1 \cos 2x + c_2 \sin 2x
+    \end{equation*}
+
+    where $c_1$ and $c_2$ are arbitrary coefficients.
+
+    Find $y_p$, we consider 
+
+    \[
+        y_p = x[A \cos 2x + B \sin 2x]
+    \]
+
+    when differentiating we have 
+    \begin{align*}
+        y'_p &= A \cos 2x + B \sin 2x + x(-2A \cos 2x -2B \sin 2x]) \\[0.5em]
+        y''_p &= (-2A \sin 2x + 2B \cos 2x) + (-2A \sin 2x + 2B \cos 2x)
+        + x(-4A \cos 2x - 4B \sin 2x)
+    \end{align*}
+
+    which $A$ and $B$ are the constants that we need to solve.
+    Now substituting $y_p$, $y'_p$, and $y''_p$ back into \eqref{eq:sod2}, the equation is 
+
+    \[
+        [-4A \sin 2x + 4B \cos 2x + x(-4A \sin 2x - 4B \sin 2x)] + 4x[A \cos 2x + B\sin 2x] 
+        = 12 \cos 2x
+        (-4A - 4Ax)
+    \]
+
+    Equating the coefficients we have 
+    \begin{align*}
+        \begin{cases}
+            -4A = 0 &\Rightarrow A = 0\\
+        4B = 12 &\Rightarrow B = 3
+        \end{cases}
+    \end{align*}
+
+    this arrived that $\fbox{$y_p = 3x \sin 2x$}$. The general solution of \eqref{eq:sod2} is 
+
+    \begin{equation*}
+        y = c_1 \cos 2x + c_2 \sin 2x + \fbox{$3x \sin 2x$}
+    \end{equation*}
+
+    From the given IVP conditions, we can determine the constants $c_1$ and $c_2$
+\end{solution}
+
+\section{Variation of Parameters}
+
+This method is more powerful than that of undetermined coefficients. It can be used to find 
+$y_p$ even for the LDE with variable coefficients:
+\begin{equation}
+    y'' + p(x)y' + q(x)y = \varphi(x)
+\end{equation}
+
+\begin{theorem}[Variation of parameters]
+    Consider the differential equation. 
+
+    \begin{equation}
+        y'' + p(x)y' + q(x)y = \varphi(x)
+    \end{equation}
+
+    Assume that $y_1(t)$ and $y_2(t)$ are a fundamental set of solutions for 
+    \begin{equation}
+        y'' + p(x)y' + q(x)y = 0
+    \end{equation}
+
+    Then a particular solution to the non-homogeneous DE is
+    \begin{equation}
+        y_p(t) = u'_1 y_1(t) + u'_2 y_2(t)
+    \end{equation}
+    where 
+    \begin{equation}
+        u'_1 = -\,\frac{y_2(x) \varphi(x)}{W(y_1, y_2)}, \quad
+        u'_2 = \frac{y_1(x) \varphi(x)}{W(y_1, y_2)} 
+    \end{equation}
+
+    $W(y_1, y_2)$ is the Wronskian in which defined as 
+    \begin{equation}
+        W(y_1, y_2) = \begin{vmatrix}
+            y_1(x) & y_2(x)\\
+            y'_1(x) & y'_2(x)
+        \end{vmatrix} = y_1(x)\,y'_2(x) - y_2(x)\,y'_1(x)
+    \end{equation}
+\end{theorem}
+
+\begin{example}
+    Find the general solution of 
+
+    \[
+        y'' + y = \sec x, \quad 0 < x < \pi/2
+    \]
+\end{example}
+
+\begin{example}
+    Find the general solution of 
+
+    \[
+        y'' -2y' + 2y = e^x \sin x
+    \]
+\end{example}
+\begin{solution}
+    This equation is a second-order non-homogeneous DE. The general solution 
+    should take the form of 
+    
+    \[
+        y = y_p + y_h
+    \]
+
+    We find $y_h$ with characteristic equation 
+
+    \[
+        r = \frac{2 \pm \sqrt{(-2)^2 - 4(2)}}{2} = \fbox{$1 \pm i$}
+    \]
+
+    has two complex roots, so the general solution of $y_h$ is 
+
+    \[
+        y_h = e^{x}[c_1 \cos x + c_2 \sin x]
+    \]
+    
+    Next, we are going to use the method of variation of parameters to determine the 
+    particular solution $y_p$. According to the theorem, $y_p$ to the 
+    non-homogeneous DE is 
+    \[
+        y_p(t) = u'_1 y_1(t) + u'_2 y_2(t)
+    \]
+
+    Compute the Wronskian,
+    \begin{align*}
+        W = \begin{vmatrix}
+            y_1 & y_2 \\ y'_1 & y'_2
+        \end{vmatrix}
+        &= \begin{vmatrix}
+            e^x \cos x & e^x \sin x \\ -e^x \sin x + \cos x & e^x \sin x + e^x \cos x
+        \end{vmatrix}\\
+        &= e^x \cos x (e^x \sin x + e^x \cos x) - e^x \sin x (e^x \cos x - e^x \sin x)\\
+        &= e^{2x}
+    \end{align*}
+
+    and we compute $u'_1$ and $u'_2$,
+
+    \[
+        u'_1 = -\, \frac{y_2\, \varphi(x)}{W} = -\, \frac{e^x \sin x (e^x \sin x)}{e^{2x}} = - \sin^2 x
+    \]
+
+    \[
+        u'_2 = \frac{y_1\, \varphi(x)}{W} = \frac{e^x \cos x (e^x \sin x)}{e^{2x}} = \sin x \cos x
+    \]
+
+    Itegrating $u'_1$ and $u'_2$ with respect to $x$,
+    \begin{align*}
+        u_1 = \int - \sin^2 x \> dx &= \int -\biggl( \frac{1}{2} - \frac{1}{2}\cos 2x \biggr) \> dx \\
+        &= -\frac{x}{2} + \frac{\sin (2x)}{4} & \text{Ignore the constant}
+    \end{align*}
+
+    \begin{align*}
+        u_2 = \int \sin x \cos x \> dx &= \frac{1}{2} \int (2 \sin x \cos x) \> dx\\
+        &= -\frac{1}{4} \cos 2x + C \\
+        &= -\frac{1}{4} + \frac{1}{2} \sin^2 x + C\\
+        &= \frac{1}{2} \sin^2 x & \text{Ignore the constant}
+    \end{align*}
+
+    this yield that the particular solution is 
+
+    \[
+        y_p = - \biggl(\frac{x}{2} - \frac{\sin 2x}{4} \biggr) e^x \cos x 
+        + \frac{1}{2} \sin^2 x (e^x \sin x)
+    \]
+
+    thus the general solution of the non-homogeneous DE is
+    
+    \[
+        y = e^x[c_1 \cos x + c_2 \sin x] - \biggl(\frac{x}{2} - \frac{\sin 2x}{4} \biggr) e^x \cos x 
+        + \frac{1}{2} e^x \, \sin^3 x
+    \]
+
+    where $c_1$ and $c_2$ are arbitrary constants.
+\end{solution}

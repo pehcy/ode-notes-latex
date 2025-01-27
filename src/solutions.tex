@@ -612,8 +612,44 @@ is homogeneous if it can be written in the form
 
             which can be rewrite into 
             \begin{equation}
-                y' + \frac{1}{x} y = - y^2 
+                y' + \frac{1}{x} y = - y^2 \label{eq:sln1} \tag{{\color{red} $\diamond$}}
             \end{equation}
+
+            Now use the substitution $w = y^{1-n} = y^{1-2} = y^{-1}$. We have 
+
+            \begin{equation}
+                \frac{dw}{dx} = -y^{-2}\, \frac{dy}{dx}
+            \end{equation}
+
+            Now multiply \eqref{eq:sln1} by $-y^{-2}$, 
+
+            \begin{align*}
+                -y^{-2}\, \frac{dy}{dx} + \frac{1}{x}y^{-1} &= 1\\
+                \frac{dw}{dx} - \frac{1}{x} w = 1 \label{eq:sln2} \tag{{\color{orange} $\blacksquare$}}
+            \end{align*}
+
+            We can solve this using the integrating factor $I$, applying the formula and compute 
+            the integrating factor
+
+            \begin{equation}
+                I = e^{\int 1/x \> dx} = e^{-\ln |x|} = \frac{1}{x}
+            \end{equation}
+
+            Now multiplying \eqref{eq:sln2} with integrating factor $I$
+
+            \begin{align*}
+                \frac{1}{x} \biggl(\frac{dw}{dx} - \frac{w}{x} \biggr) &= \frac{1}{x}\\
+                \frac{d}{dx} \biggl( \frac{w}{x}\biggr) &= \frac{1}{x}\\
+                \frac{w}{x} &= \int \frac{1}{x} \> dx = \ln |x| + C & C \text{ is a constant}\\
+            \end{align*}
+
+            This arrive that the solution is $w = x \ln |x| + Cx$, where $C$ is a constant. Recall 
+            that $w = 1/y$, hence the last step is solve for $y$.
+
+            \begin{align*}
+                \frac{1}{y} &= x \ln |x| + Cx\\
+                y &= \frac{1}{x \ln |x| + Cx},\quad  x \neq 0
+            \end{align*}
     \end{enumerate}
 \end{solution}
 
