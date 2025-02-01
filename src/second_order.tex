@@ -1,7 +1,44 @@
 \chapter{Second-order differential equations}
+A second-order linear differential equation is an equation of the form
+
+\begin{equation}
+    a(x)y'' + b(x)y' + c(x)y = g(x)
+\end{equation}
+
+where $a(x), b(x), c(x)$, and $g(x)$ are functions of $x$. This DE is called \textbf{homogeneous} if 
+$g(x) = 0$ for all $x$. Otherwise, it is called \textbf{non-homogeneous}.
+
 
 We now consider what constitutes the so-called general solution of a homogeneous linear DE. To understand this, 
 we first introduce the concepts of linear dependence and linear independent.
+
+\begin{example}
+    Find the longest interval in which the solution of the IVP 
+    \[
+        (x^2 - 3x)y'' + xy' - (x+3)y = 0, \quad y(1) = 2, \quad y'(1) = 1
+    \]
+    is certian to exist.
+\end{example}
+\begin{solution}
+    By dividing by $(x^2 - 3x)$ we get the standard form 
+    \[
+        y'' + p(x)y' + q(x)y = r(x)
+    \]
+    where 
+    \[
+        p(x) = \frac{x}{x^2 - 3x}, \quad q(x) = -\, \frac{x+3}{x^2 - 3x}, \quad r(x) = 0
+    \]
+    being rational functions, both $p$, $q$, and $r$ are continuous everywhere except 
+    at points $x = 0$ and $x = 3$. 
+
+    Therefore the longest open interval, containing the initial point $x = 1$, in which all 
+    the functions are continuous is $0 < x < 3$. Thus, $(0, 3)$ is the longest interval 
+    which the theorem guarantees that the solution exists.
+\end{solution}
+
+
+\section{Superposition Principle}
+
 
 \section{Linear dependence and linear independence}
 
@@ -32,6 +69,21 @@ called the fundamental set of  solutions (a basis of $S$) to the HLDE.
 To show that $\{y_1, y_2 \}$ is a fundamental set of solutions of HLDE. We can perform the Wronskian test, 
 by Wronskian test we must show they are both \textbf{solutions} and \textbf{linearly independent}.
 
+\begin{example}
+    Determine whether the functions 
+    \[
+        f_1(x) = \sqrt{x}, \quad f_2(x) = \sqrt{x} + 8, \quad f_3 = 2, \quad f_4(x) = x^2 
+    \]
+    are linearly dependent on the interval $(0, \infty)$.
+
+\end{example}
+\begin{solution}
+    By inspection, we have 
+    \[
+        f_2(x) = 1 \cdot f_1(x) + 4 \cdot 
+    \]
+\end{solution}
+
 \begin{definition}[Wronskian]
     The \textbf{Wronskian} of two differential functions, said $f(x)$ and $g(x)$ 
     is the determinant
@@ -42,6 +94,105 @@ by Wronskian test we must show they are both \textbf{solutions} and \textbf{line
         \end{vmatrix} = f(x)\,g'(x) - g(x)\, f'(x)
     \end{equation}
 \end{definition}
+
+\begin{theorem}[Wronskian Test for linearly dependence]
+    Let $y_1(x)$ and $y_2(x)$ be two solutions of a second order homogeneous linear 
+    differential equation 
+    \begin{equation}
+        y'' + p(x)y' q(x)y = 0
+    \end{equation}
+    where the coefficients $p(x)$ and $q(x)$ are continuous on an open interval $I$. 
+    Then $y_1(x)$ and $y_2(x)$ are linearly dependent on $I$ and only if 
+    
+    \begin{equation}
+        W(y_1(x), y_2(x)) = 0
+    \end{equation}
+
+    for every $x \in I$.
+\end{theorem}
+\begin{proof}
+    $(\Rightarrow)$ Suppose $y_1(x)$ and $y_2(x)$ are linearly dependent on $I$. Then $y_1 = Cy_2$ for some 
+    constant $C$. Hence, $y'_1 = Cy'_2$ and 
+    
+    \begin{equation*}
+        W(y_1(x), y_2(x)) = \begin{vmatrix}
+            y_1(x) & y_2(x)\\ y'_1(x) & y'_2(x) 
+        \end{vmatrix} = \begin{vmatrix}
+            Cy_1 & y_2(x)\\ Cy'_1(x) & y'_2(x) 
+        \end{vmatrix} = 0
+    \end{equation*}
+
+    because the two columns are scalar multiples of each other.
+
+    $(\Leftarrow)$ Suppose $W(y_1(x), y_2(x)) = 0$ for every $x \in I$. We must show that 
+     $y_1$ and $y_2$ are scalar multiples of each other. There are two possible cases:
+
+     \subsubsection*{Case 1}
+     If $y_1(x) = 0$ for all $x \in I$, then $y_1 = 0 \cdot y_2$ and we are done here.
+
+     \subsubsection*{Case 2}
+     If $y_1(x) \neq 0$ for some $x \in I$. As $y_1$ is continuous on $I$, we must have a subinterval 
+     $\mathfrak{I} \subseteq I$ such that 
+     \[
+        y_1(x) \neq 0 \quad \text{for all } x \in \mathfrak{I}
+     \]
+    
+     Dividing 
+
+     \[
+        W(y_1(x), y_2(x)) = y_1y'_2 - y'_1y_2 = 0
+     \]
+
+     by $y_1^2$, we obtain 
+
+     \[
+        \frac{y_1y'_2 - y'_1y_2}{y_1^2} = \biggl( \frac{y_2}{y_1} \biggr)' = 0 \quad 
+        \text{ or } \frac{y_2}{y_1} = C
+     \]
+
+     for some constant $C$. 
+
+     Hence, $y_2(x) = Cy_1(x)$ for all $x \in \mathfrak{I}$.
+
+     Since $\mathfrak{I} \subseteq I$, we may now apply the existence and uniqueness theorem to conclude that 
+
+     \[
+        y_2(x) = Cy_1(x)
+     \]
+
+     for all $x \in \mathfrak{I}$.
+\end{proof}
+
+Equivalently, we may induced the following theorem.
+
+\begin{theorem}[Wronskian Test for linearly independence]
+    The two solutions $y_1(x)$ and $y_2(x)$ of a second order homogeneous linear 
+    differential equation
+    \begin{equation}
+        y'' + p(x)y' + q(x)y = 0
+    \end{equation}
+    are linearly independent on $I$ if and only if 
+    \begin{equation}
+        W(y_1(x), y_2(x)) \neq 0
+    \end{equation}
+    for every $x \in I$. Where $p$ and $q$ are continuous on an open interval $I$.
+\end{theorem}
+
+\begin{proof}
+    let
+    \begin{align*}
+        &P(x): \text{The two solutions of the DE } y_1(x) \text{ and } y_2(x) \text{ are linearly dependent.}\\
+        &Q(x): W(y_1(x), y_2(x)) = 0
+    \end{align*}
+
+    Take the contraposition of the previous theorem,
+    \begin{equation}
+        \forall x \in I \> P(x) \leftrightarrow Q(x) \Longleftrightarrow \forall x \in I \> \lnot P(x) \leftrightarrow \lnot Q(x)
+    \end{equation}
+
+    which construct the theorem of Wronskian Test for linearly independence.
+\end{proof}
+
 
 \begin{remark}
     If Wronskian is nonzero, then the solutions $y_1$ and $y_2$ are linearly independent. 
@@ -172,8 +323,7 @@ where $y_p$ is the general solution of the associated homogeneous equation
         y'' + 4y = 12 \cos 2x   \label{eq:sod2} \tag{{\color{red} $\bigstar$}}
     \end{equation*}
 
-    The original DE is a second-order non-homogeneous DE. The general solution should be 
-
+    This equation is a second-order non-homogeneous DE. The general solution should be 
     \[
         y = y_p + y_h
     \]
@@ -212,7 +362,6 @@ where $y_p$ is the general solution of the associated homogeneous equation
     \[
         [-4A \sin 2x + 4B \cos 2x + x(-4A \sin 2x - 4B \sin 2x)] + 4x[A \cos 2x + B\sin 2x] 
         = 12 \cos 2x
-        (-4A - 4Ax)
     \]
 
     Equating the coefficients we have 
@@ -226,10 +375,32 @@ where $y_p$ is the general solution of the associated homogeneous equation
     this arrived that $\fbox{$y_p = 3x \sin 2x$}$. The general solution of \eqref{eq:sod2} is 
 
     \begin{equation*}
-        y = c_1 \cos 2x + c_2 \sin 2x + \fbox{$3x \sin 2x$}
+        y = c_1 \cos 2x + c_2 \sin 2x + \fbox{$3x \sin 2x$} \label{eq:sod2.1} \tag{{\color{green} $\clubsuit$}}
     \end{equation*}
 
-    From the given IVP conditions, we can determine the constants $c_1$ and $c_2$
+    From the given IVP conditions, we can determine the constants $c_1$ and $c_2$.
+    
+    Differentiating \eqref{eq:sod2.1} with respect to $x$,
+
+    \[
+        y' = - 2 c_1 \sin 2x + 2 c_2 \cos 2x + 3 (\sin 2x + 2x \cos 2x)
+    \]
+
+    and now substitute the initial conditions $y(0) = 3$ and $y'(0) = 4$
+
+    \begin{equation*}
+        \begin{cases}
+            y(0) = 3 &\Rightarrow c_1 + 0 + 0 = 3\\
+            y'(0) = 4 &\Rightarrow 0 + 2c_2 + 0 = 4
+        \end{cases}
+    \end{equation*}
+
+    On solving, we obtained $c_1 = 3$ and $c_2 = 2$. The general solution for 
+    \eqref{eq:sod2} is 
+    \[
+        y = 3 \cos 2x + (3x + 2) \sin 2x
+    \]
+
 \end{solution}
 
 \section{Variation of Parameters}
@@ -338,14 +509,14 @@ $y_p$ even for the LDE with variable coefficients:
     Itegrating $u'_1$ and $u'_2$ with respect to $x$,
     \begin{align*}
         u_1 = \int - \sin^2 x \> dx &= \int -\biggl( \frac{1}{2} - \frac{1}{2}\cos 2x \biggr) \> dx \\
-        &= -\frac{x}{2} + \frac{\sin (2x)}{4} & \text{Ignore the constant}
+        &= -\frac{x}{2} + \frac{\sin (2x)}{4} & \text{(Ignore the constant)}
     \end{align*}
 
     \begin{align*}
         u_2 = \int \sin x \cos x \> dx &= \frac{1}{2} \int (2 \sin x \cos x) \> dx\\
         &= -\frac{1}{4} \cos 2x + C \\
         &= -\frac{1}{4} + \frac{1}{2} \sin^2 x + C\\
-        &= \frac{1}{2} \sin^2 x & \text{Ignore the constant}
+        &= \frac{1}{2} \sin^2 x & \text{(Ignore the constants)}
     \end{align*}
 
     this yield that the particular solution is 
@@ -364,3 +535,38 @@ $y_p$ even for the LDE with variable coefficients:
 
     where $c_1$ and $c_2$ are arbitrary constants.
 \end{solution}
+
+\section{Tutorials}
+
+\begin{mdframed}
+    \vspace{-0.25cm}
+    \hspace{-0.25cm}
+    \begin{Exercise}
+        Solve the initial-value problem
+
+        \[
+            y'' - 6y' + 8y = 85\cos x, \quad y(0) = 0, \quad y'(0) = 2
+        \]
+    \end{Exercise}
+
+    \begin{Exercise}
+        Find a second order differential equation so that the solution
+        \[
+            y = C_1 e^{-3x} \cos(4x) + C_2 e^{-3x} \sin(4x) + 4e^{3x}
+        \]
+
+        solves the differential equation for any choice of $C_1$ and $C_2$.
+    \end{Exercise}
+
+    \begin{Exercise}
+        Use the method of variation of parameters to find a particular solution 
+        of the given non-homogeneous equation. 
+        
+        \[
+            y'' + y = \sec x \tan x
+        \]
+        
+        Then find the general solution 
+        of the equation.
+    \end{Exercise}
+\end{mdframed}
