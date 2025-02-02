@@ -141,3 +141,27 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
 \renewcommand{\ExerciseHeader}{\AtBeginExerciseHeader \textbf{\ExerciseHeaderDifficulty \ExerciseName~\ExerciseHeaderNB} \quad }
 %\renewcommand{\ExerciseHeader}{\textbf{\ExerciseName~\ExerciseHeaderNB}\quad}
 \renewcommand{\AnswerHeader}{\AtBeginExerciseHeader \textbf{\AnswerName~\ExerciseHeaderNB}\smallskip\newline}
+
+\pgfplotsset{ % Define a common style, so we don't repeat ourselves
+    quiv/.style={
+        width=0.6\textwidth, % Overall width of the plot
+        axis equal image, % Unit vectors for both axes have the same length
+        view={0}{90}, % We need to use "3D" plots, but we set the view so we look at them from straight up
+        xmin=0, xmax=1.1, % Axis limits
+        ymin=0, ymax=1.1,
+        domain=0:1, y domain=0:1, % Domain over which to evaluate the functions
+        xtick={0,0.5,1}, ytick={0,0.5,1}, % Tick marks
+        samples=11, % How many arrows?
+        cycle list={    % Plot styles
+                gray,
+                quiver={
+                    u={1}, v={f(x)}, % End points of the arrows
+                    scale arrows=0.075,
+                    every arrow/.append style={
+                        -latex % Arrow tip
+                    },
+                }\\
+                red, samples=31, smooth, thick, no markers, domain=0:1.1\\ % The plot style for the function
+        }
+    }
+}

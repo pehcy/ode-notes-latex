@@ -181,16 +181,16 @@ Equivalently, we may induced the following theorem.
 \begin{proof}
     let
     \begin{align*}
-        &P(x): \text{The two solutions of the DE } y_1(x) \text{ and } y_2(x) \text{ are linearly dependent.}\\
+        &P(x): \text{The two solutions of the DE, } y_1(x) \text{ and } y_2(x) \text{ are linearly dependent.}\\
         &Q(x): W(y_1(x), y_2(x)) = 0
     \end{align*}
 
     Take the contraposition of the previous theorem,
     \begin{equation}
-        \forall x \in I \> P(x) \leftrightarrow Q(x) \Longleftrightarrow \forall x \in I \> \lnot P(x) \leftrightarrow \lnot Q(x)
+        \forall x \in I \> P(x) \leftrightarrow Q(x) \Longleftrightarrow \fbox{$\forall x \in I \> \lnot P(x) \leftrightarrow \lnot Q(x)$}
     \end{equation}
 
-    which construct the theorem of Wronskian Test for linearly independence.
+    which construct the theorem of \textbf{Wronskian Test for linearly independence}.
 \end{proof}
 
 
@@ -534,6 +534,62 @@ $y_p$ even for the LDE with variable coefficients:
     \]
 
     where $c_1$ and $c_2$ are arbitrary constants.
+\end{solution}
+
+\section{Variable-Coefficient Equations}
+
+\begin{definition}
+    Any linear differential equation (LDE) of the form
+    \begin{equation}
+        a_n x^n y^{(n)} + a_{n-1} x^{n-1} y^{(n-1)} + \cdots +
+    a_{1} x^{1} y^{(1)} + a_{0} y = 0
+    \end{equation}
+    where the coefficients $a_n, a_{n-1}, \ldots, a_0$ are constants is called an \textbf{Euler equation}.
+\end{definition}
+
+\begin{example}
+    Solve the IVP:
+    \[
+        x^2y'' - 2y = 4x - 8, \quad y(1) = 4, \quad y'(1) = -1
+    \]
+\end{example}
+\begin{solution}
+    Given 
+    \begin{equation}
+        x^2y'' - 2y = 4x - 8 \label{eq:sod2.5} \tag{{\color{orange} $\blacktriangle$}}
+    \end{equation}
+
+    This is an Euler equation. The substitution $y = x^m$ yields 
+    \[
+        m(m-1) - 2 = m^2 - m - 2 = (m+1)(m-2) = 0
+    \]
+    whose roots are $m_1 = -1$ and $m_2 = 2$.
+
+    Hence, 
+
+    \[
+        y_h = c_1 y_1 + c_2 y_2 = c_1 x^{-1} + c_2x^2
+    \]
+
+    Use the variation of parameters to find $y_p$, a particular solution for \eqref{eq:sod2.5}.
+
+    The standard form of this DE is 
+
+    \[
+        y'' - \frac{2}{x^2}y = r(x) = \frac{4x - 8}{x^2}
+    \]
+
+    compute Wronskian
+
+    \[
+        W = \begin{vmatrix}
+            y_1 & y_2\\ y'_1 & y'_2
+        \end{vmatrix}
+        = \begin{vmatrix}
+            x^{-1} & x^2 \\ -x^{-2} & 2x 
+        \end{vmatrix} = 3
+    \]
+
 \end{solution}
 
 \section{Tutorials}
