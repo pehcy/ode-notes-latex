@@ -84,7 +84,8 @@ numbered=no
 \usetikzlibrary{decorations.markings}
 \usepgfplotslibrary{fillbetween}
 \usepackage[siunitx]{circuitikz}
-
+\usepackage{tikz-3dplot}
+\definecolor{darkolivegreen}{rgb}{0.33, 0.42, 0.18}
 \usepackage{empheq}
 
 \usepackage{polynom}
@@ -165,3 +166,5 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
         }
     }
 }
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}

@@ -60,3 +60,313 @@
 
 Systems of linear first order ODEs with constant coefficients is an important class 
 that we will discuss their solutions in detail.
+
+\begin{example}
+    Solve the system of ODEs
+
+    \[
+        \overrightarrow{\mathbf{x}}'(t) = \begin{bmatrix}
+            3 & 4\\ 3 & 2
+        \end{bmatrix}
+        \overrightarrow{\mathbf{x}}(t) + \begin{bmatrix}
+            6 \\ -12
+        \end{bmatrix}
+    \]
+\end{example}
+\begin{solution}
+    Given the system of ODEs
+    \begin{equation*}
+        \overrightarrow{\mathbf{x}}'(t) = \begin{bmatrix}
+            3 & 4\\ 3 & 2
+        \end{bmatrix}
+        \overrightarrow{\mathbf{x}}(t) + \begin{bmatrix}
+            6 \\ -12
+        \end{bmatrix} \label{eq:os1} \tag{{\color{red} $\clubsuit $}}
+    \end{equation*}
+
+    The general solution of \eqref{eq:os1} is 
+    \[
+        \overrightarrow{\mathbf{x}} = \overrightarrow{\mathbf{x}}_h + \overrightarrow{\mathbf{x}}_p
+    \]
+
+    First we want to find $\overrightarrow{\mathbf{x}}_h$, the homogeneous solution of 
+    \[
+        \overrightarrow{\mathbf{x}}'(t) = \mathbf{A}\overrightarrow{\mathbf{x}}(t)
+    \]
+
+    Find the eigenpairs of $\mathbf{A}$ by solving for eigenvalues.
+    \begin{align*}
+        \det (\mathbf{A} - \lambda \mathbf{I}) = 0 &\Rightarrow 
+        \det \begin{bmatrix}
+            3-\lambda & 4\\ 3 & 2 - \lambda
+        \end{bmatrix} = 0\\
+        &\Rightarrow \lambda^2 - 5\lambda - 6 = 0
+    \end{align*}
+
+    On solving, we obtain $\lambda_1 = 6$ and $\lambda_2 = -1$.
+
+    As $\lambda_1 = 6$, we substitute $\lambda_1 = 6$ back into \eqref{eq:os1} and find an eigenvector
+    \[
+        \left[
+        \begin{array}{cc|c}
+        3-6 & 4 & 0 \\
+        3 & 2-6 & 0 \\
+        \end{array}
+        \right] \xrightarrow[]{R_2 \leftarrow R_2 + R_1}
+        \left[
+        \begin{array}{cc|c}
+        -3 & 4 & 0 \\
+        0 & 0 & 0 \\
+        \end{array}
+        \right]
+    \]
+
+    which means $-3x_1 + 4x_2 = 0$. By letting $x_1 = 4$ and $x_2 = 3$ we have the first eigenvector 
+    \[
+        \overrightarrow{\mathbf{v}}_1 = \begin{bmatrix}
+            4 \\ 3
+        \end{bmatrix}
+    \]
+
+    As $\lambda_2 = -1$, we substitute $\lambda_2 = -1$ back into \eqref{eq:os1}
+    \[
+        \left[
+        \begin{array}{cc|c}
+        3+1 & 4 & 0 \\
+        3 & 2+1 & 0 \\
+        \end{array}
+        \right] \xrightarrow[\displaystyle R_1 \leftarrow \frac{1}{4}R_1]{\displaystyle R_2 \leftarrow R_2 - \frac{3}{4}R_1}
+        \left[
+        \begin{array}{cc|c}
+        1 & 1 & 0 \\
+        0 & 0 & 0 \\
+        \end{array}
+        \right]
+    \]
+
+    which means $x_1 + x_2 = 0$. One of the satisfies pair is $x_1 = 1$ and $x_2 = -1$. From that we have the second eigenvector 
+    \[
+        \overrightarrow{\mathbf{v}}_2 = \begin{bmatrix}
+            1 \\ -1
+        \end{bmatrix}
+    \]
+    so that
+    \[
+        \mathbf{A} = \text{Span} \Biggl \{ \begin{bmatrix}
+            3 \\ 4
+        \end{bmatrix}, \begin{bmatrix}
+            1 \\ -1
+        \end{bmatrix}\Biggr \}
+    \]
+    thus the homogeneous solution of $\overrightarrow{\mathbf{x}}'(t) = \mathbf{A}\overrightarrow{\mathbf{x}}(t)$ is 
+    \begin{equation*}
+        \overrightarrow{\mathbf{x}}_h = c_1 \> e^{6t} \begin{bmatrix}
+            4 \\ 3
+        \end{bmatrix} + c_2 \> e^{-t} \begin{bmatrix}
+            1 \\ -1
+        \end{bmatrix}
+    \end{equation*}
+    where $c_1$ and $c_2$ are arbitrary constants.
+
+    Hence we are going to use the method of undetermined coefficients to find the particular solution 
+    $\overrightarrow{\mathbf{x}}_p$, we first try to set 
+    \begin{equation*}
+        \overrightarrow{\mathbf{x}}_p = \begin{bmatrix}
+            A \\ B
+        \end{bmatrix}
+    \end{equation*}
+
+    The equation is 
+
+    \[
+        \begin{bmatrix}
+            3 & 4\\ 3 & 2
+        \end{bmatrix}
+        \begin{bmatrix}
+            A \\ B
+        \end{bmatrix}
+        + \begin{bmatrix}
+            6 \\ -12
+        \end{bmatrix} = \begin{bmatrix}
+            0 \\ 0
+        \end{bmatrix}
+    \]
+    
+    Solve for $A, B$.
+    \[
+        \left[
+        \begin{array}{cc|c}
+        3 & 4 & -6 \\
+        3 & 2 & 12 \\
+        \end{array}
+        \right] \xrightarrow[R_2 \leftarrow R_2 - R_1]{}
+        \left[
+        \begin{array}{cc|c}
+        3 & 4 & -6 \\
+        0 & -2 & 18 \\
+        \end{array}
+        \right] \xrightarrow[\displaystyle R_1 \leftarrow \frac{R_1 - 4R_2}{3}]{\displaystyle R_2 \leftarrow -\frac{1}{2}R_2}
+        \left[
+        \begin{array}{cc|c}
+            1 & 0 & 10 \\
+            0 & 1 & -9 \\
+        \end{array}
+        \right]
+    \]
+    and we have 
+    \begin{equation*}
+        \overrightarrow{\mathbf{x}}_p = \begin{bmatrix}
+            10 \\ -9
+        \end{bmatrix}
+    \end{equation*}
+
+    Finally, the general solution for \eqref{eq:os1} is 
+    \begin{equation*}
+        \overrightarrow{\mathbf{x}} = c_1 \> e^{6t} \begin{bmatrix}
+            4 \\ 3
+        \end{bmatrix} + c_2 \> e^{-t} \begin{bmatrix}
+            1 \\ -1
+        \end{bmatrix}
+        + \begin{bmatrix}
+            10 \\ -9
+        \end{bmatrix}
+    \end{equation*}
+\end{solution}
+
+\section{Non-linear system of differential equations}
+
+\subsection{Tangent plane}
+
+Intuitively, it seems clear that in a continuous and smooth plane in 3-dimensional space. There are many straight lines 
+that can be tangent to a given point $\Gamma_0$.
+
+\begin{center}
+    \begin{tikzpicture}[font=\sffamily,declare function={%
+        f(\x,\y)=3+.075*cos(\x*100)*cos(\y*100)-.035*(\y-5)^2-.01*(\x-5)^2;
+        g(\x) = .075*(\x-4)^2+4;
+        h(\x) = .02*(\x-4)^3-.2*(\x-4)+4;
+        t(\x,\y)=f(4,4) -0.05*(\x-4) + 0.02*(\y-4); }]
+    
+        \tdplotsetmaincoords{70}{110}
+    
+        \begin{scope}[tdplot_main_coords]
+            \draw[-latex] (0,0,0) -- (8,0,0) node[anchor=north] {$x$};
+            \draw[-latex] (0,0,0) -- (0,8,0) node[anchor=west] {$y$};
+            \draw[-latex] (0,0,0) -- (0,0,4) node[anchor=south] {$z=f(x, y)$};
+    
+            %Grid       
+            \foreach \X in {1,...,6}
+            {
+                \draw[thin,gray!40] plot[variable=\x,samples=60,smooth,domain=1:6] ({\X},{\x},0);
+                \draw[thin,gray!40] plot[variable=\x,samples=60,smooth,domain=1:6] ({\x},{\X},0);
+                \draw[thin,gray!40] plot[variable=\x,samples=60,smooth,domain=1:6] ({\X},{\x},{f(\X,\x)});
+                \draw[thin,gray!40] plot[variable=\x,samples=60,smooth,domain=1:6] ({\x},{\X},{f(\x,\X)});
+            }     
+    
+            % Curves
+            \draw[darkolivegreen,thick] plot[variable=\x,samples=60,smooth,domain=1:6]
+            ({g(\x)},{\x},{f(g(\x),\x)}) node [right] {\scriptsize $f_x$};
+    
+            \draw[darkolivegreen,thick] plot[variable=\x,samples=60,smooth,domain=1:6]
+            ({g(\x)},{\x},0) node [right] {\scriptsize $y(t)$};
+    
+            \draw[orange,thick] plot[variable=\x,samples=60,smooth,domain=1:6]
+            ({\x},{h(\x)},0) node [below] {\scriptsize $x(t)$};
+    
+            \draw[orange,thick] plot[variable=\x,samples=60,smooth,domain=1:6]
+            ({\x},{h(\x)},{f(\x,h(\x))});
+    
+            \node[orange, anchor=west] at ({0},{h(0)},{f(0,h(0))}) {\scriptsize $f_y$};
+    
+            % Tangent plane
+            \fill[purple!10,opacity=0.4,draw=purple] (3,3,{t(3,3)}) -- (3,5,{t(3,5)}) -- (5,5,{t(5,5)}) -- (5,3,{t(5,3)}) -- (3,3,{t(3,3)}) node[anchor=north west,purple,opacity=1] {\scriptsize $\Gamma_0$};
+    
+            % Vector fields
+            \draw[->,>=stealth,thick,blue] (4,4,{f(4,4)}) -- (4,5.02,{f(4,4)+.06}) node [below] {\scriptsize $N(x_0)$};
+            \draw[->,>=stealth,red,thick] (4,4,0) -- (3,4.2,0) node[anchor=west] {};
+            \draw[->,>=stealth,red,thick] (4,4,{f(4,4)}) -- (3,4.2,{f(4,4)+.06}) node[anchor=south east] {};
+    
+            % Points
+            \fill[black] (4,4,0) circle (1pt) node[anchor=north] {\scriptsize $(x_0, y_0)$};
+            \fill[black] (4,4,{f(4,4)}) circle (1pt) node[anchor=north east] {};
+        \end{scope}
+    \end{tikzpicture}
+\end{center}
+
+\begin{theorem}[Linearlization of a function]
+    Let $P_0 = (x_0, y_0)$ be a point on a surface $f$. Then the linearization of $f(x, y)$ 
+    at point $P_0$ is 
+    
+    \begin{equation}
+        L(x,y) = f(x_0, y_0) + f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0) 
+    \end{equation}
+
+    where $f_x$ and $f_y$ are the partial derivative of $f$ with $x$ and $y$ respectively.
+\end{theorem}
+
+\begin{example}
+    Find the critical points of 
+    \begin{equation*}
+        \begin{cases}
+            x' = x(1-y)\\
+            y' = y(2-x)
+        \end{cases}
+    \end{equation*}
+
+    and hence solve the system.
+\end{example}
+\begin{solution}
+    We can rewrite the original DE to
+    \begin{equation*}
+        \begin{cases}
+            x' = x-xy\\
+            y' = 2y-xy
+        \end{cases} \label{eq:os2.1} \tag{{\color{red} $\heartsuit  $}}
+    \end{equation*}
+
+    and with that, we can express it in the vector form
+    \[
+        \overrightarrow{\mathbf{x}}'(x) = \mathbf{A}\overrightarrow{\mathbf{x}} + \overrightarrow{G}
+    \]
+    
+    where
+    \[
+        \mathbf{A} = \begin{bmatrix}
+            1 & 0\\ 0 & 2
+        \end{bmatrix}, \quad \text{ and }
+        \overrightarrow{G} = \begin{bmatrix}
+            -xy \\ -xy 
+        \end{bmatrix}
+        = \begin{bmatrix}
+            f(x,y) \\ g(x,y)
+        \end{bmatrix}
+    \]
+
+    We want to show that \eqref{eq:os2.1} is almost linear near the origin $(0,0)$.
+    
+    \textbf{Intuition}: We can try to show that
+    \begin{equation*}
+        \lim_{\norm{x} \to 0} \frac{\norm{\overrightarrow{G}(x,y)}}{\norm{x}} = 0
+    \end{equation*}
+
+    Compute the limit
+    \begin{equation*}
+        \lim_{(x,y) \to (0, 0)} \frac{f(x,y)}{\sqrt{x^2 + y^2}} = \lim_{(x,y) \to (0, 0)} \frac{-xy}{\sqrt{x^2 + y^2}} 
+        \label{eq:os2.2} \tag{{\color{black} $\clubsuit$}}
+    \end{equation*}
+
+    It is a bit tricky to compute this limit. However, we can compute the limit by converting them into a cylindrical coordinates system 
+    by substituting $x = \cos \theta$ and $y = \sin \theta$ into \eqref{eq:os2.2}. Now it becomes
+
+    \begin{equation*}
+        \eqref{eq:os2.2} \Rightarrow \lim_{r \to 0^+} \frac{-r^2 \cos \theta \sin \theta}{\sqrt{r^2(\cos^2 \theta + \sin^2 \theta)}} = \lim_{r \to 0^+} -r(\underbrace{\cos \theta \sin \theta}_\text{finite}) = 0
+    \end{equation*}
+
+    Since $f(x,y) = g(x,y) = -xy$, it is certain that 
+    \begin{equation*}
+        \lim_{(x,y) \to (0, 0)} \frac{g(x,y)}{\sqrt{x^2 + y^2}} = 0
+    \end{equation*}
+
+    thus, we conclude that \eqref{eq:os2.1} is almost linear at $(0,0)$. Now we are beginning to work for the 
+    solution of this system.
+\end{solution}
