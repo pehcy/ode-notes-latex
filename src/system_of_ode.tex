@@ -483,6 +483,8 @@ that can be tangent to a given point $\Gamma_0$.
 
 \section{Variation of Parameters}
 
+\subsection{Fundamental matrix}
+
 We return to the system 
 
 \begin{equation}
@@ -492,20 +494,59 @@ We return to the system
 with the general solution 
 
 \begin{equation}
-    \overrightarrow{\mathbf{x}} = c_1 \overrightarrow{\mathbf{v}}_1(t) + c_2 \overrightarrow{\mathbf{v}}_2(t) 
-    + \cdots + c_n \overrightarrow{\mathbf{v}}_n(t)
+    \overrightarrow{\mathbf{x}} = c_1 \overrightarrow{\mathbf{x}}_1(t) + c_2 \overrightarrow{\mathbf{x}}_2(t) 
+    + \cdots + c_n \overrightarrow{\mathbf{x}}_n(t)
 \end{equation}
 
-where $\overrightarrow{\mathbf{v}}_1, \overrightarrow{\mathbf{v}}_2, \ldots, \overrightarrow{\mathbf{v}}_n$ are 
+where $\overrightarrow{\mathbf{x}}_1, \overrightarrow{\mathbf{x}}_2, \ldots, \overrightarrow{\mathbf{x}}_n$ are 
 $n$ independent solutions to the system, and $c_1, c_2, \ldots, c_n$ are distinct constants.
 
-We form the matrix whose columns are the eigenvectors $\overrightarrow{\mathbf{v}}_1, \overrightarrow{\mathbf{v}}_2, \ldots, \overrightarrow{\mathbf{v}}_n$:
+We form the matrix whose columns are the solutions $\overrightarrow{\mathbf{x}}_1, \overrightarrow{\mathbf{x}}_2, \ldots, \overrightarrow{\mathbf{x}}_n$:
+
+\begin{equation}
+    \Phi(t) = \begin{bmatrix}
+        \overrightarrow{\mathbf{x}}_1 & \overrightarrow{\mathbf{x}}_2 & \ldots & \overrightarrow{\mathbf{x}}_n
+    \end{bmatrix}
+\end{equation}
+
+Since the solutions are linearly independent, we can called them a \textbf{fundamental} set of solutions, and the matrix 
+whose columns are linearly independent and fundamental is called a \textbf{fundamental matrix} for the system. 
+
+We can writing the general solution of homogeneous system using $\Phi(t)$. As a first application of $\Phi(t)$, we can use 
+it to write the general solution 
+
+\begin{equation}
+    \overrightarrow{\mathbf{x}} = c_1 \overrightarrow{\mathbf{x}}_1(t) + c_2 \overrightarrow{\mathbf{x}}_2(t) + 
+    \cdots + c_n \overrightarrow{\mathbf{x}}_n(t) 
+\end{equation}
+
+efficiently, which becomes using the fundamental matrix
+\begin{equation}
+    \overrightarrow{\mathbf{x}} = \Phi(t) \mathbf{c} \quad \text{where } \mathbf{c} = (c_1, c_2, \ldots, c_n)^T
+\end{equation}
+
+Note that the constants $\mathbf{c}$ must but located on the right, even though the $c$'s are usually written 
+on the left when they are the coefficients of the solution $\overrightarrow{\mathbf{x}}_i$.
+
+\begin{theorem}[Fundamental matrix]
+    $\Phi(t)$ is a fundamental matrix for the system 
+    \begin{equation}
+        \overrightarrow{\mathbf{x}}' = \mathbf{A} \overrightarrow{\mathbf{x}}
+    \end{equation}
+    
+    if $\det \Phi(t) \neq 0$ and it satisfies the matrix equation
+    \begin{equation}
+        \Phi' = \mathbf{A}\Phi
+    \end{equation}
+
+    where $\Phi'$ means that each entry of $\Phi$ has been differentiated.
+\end{theorem}
 
 \begin{theorem}[Variation of parameters with fundamental matrix]
     The particular solution for the system $\overrightarrow{\mathbf{x}}'(t) = \mathbf{A} \overrightarrow{\mathbf{x}}$ is 
 
     \begin{equation}
-        \overrightarrow{\mathbf{x}}_p(t) = \Phi (t) \int^t_0 \Phi(s)^{-1}\, \overrightarrow{f}(s) \> ds
+        \overrightarrow{\mathbf{x}}_p(t) = \Phi (t) \int \Phi(s)^{-1}\, \overrightarrow{f}(t) \> dt
     \end{equation}
 
     where $\Phi(t)$ is a fundamental matrix, and $\Phi^{-1}(t)$ is the inverse of fundamental matrix.
@@ -526,15 +567,83 @@ We form the matrix whose columns are the eigenvectors $\overrightarrow{\mathbf{v
             2e^{3t} \\ 0
         \end{bmatrix}
     \]
+
+    Given that the complementary solution is 
+    \[
+        \overrightarrow{\mathbf{x}}_h = c_1\, e^{3t} \begin{bmatrix}
+            1 \\ 2
+        \end{bmatrix} + c_2\, e^{-t} \begin{bmatrix}
+            1 \\ -2
+        \end{bmatrix}
+    \]
 \end{example}
 \begin{solution}
-    By using the method of parameters, a particular solution of is 
-
+    From the given $\overrightarrow{\mathbf{x}}_h$, we know that the fundamental solutions are 
+    \[
+        \overrightarrow{\mathbf{x}}_1 = e^{3t} \begin{pmatrix}
+            1 & 2
+        \end{pmatrix}^T, \quad 
+        \overrightarrow{\mathbf{x}}_2 = e^{-t} \begin{pmatrix}
+            1 & -2
+        \end{pmatrix}^T
+    \]
+    
+    By using the method of parameters, the fundamental matrix is 
     \begin{equation}
-        \Phi(t) = e^{E\lambda t} = \begin{bmatrix}
+        \Phi(t) = \begin{bmatrix}
             e^{3t} & e^{-t}\\ 2e^{3t} & -2e^{-t}
         \end{bmatrix}
     \end{equation}
+
+    and the inverse is
+    \begin{equation}
+        \Phi(t)^{-1} = -\, \frac{1}{4e^{2t}} \begin{bmatrix}
+            -2e^{-t} & -e^{-t}\\ -2e^{3t} & e^{3t}
+        \end{bmatrix}
+    \end{equation}
+
+    compute 
+    \begin{align*}
+        \Phi(t)^{-1} \overrightarrow{f}(t) &= -\, \frac{1}{4e^{2t}} \begin{bmatrix}
+            -2e^{-t} & -e^{-t}\\ -2e^{3t} & e^{3t}
+        \end{bmatrix}
+        \begin{bmatrix}
+            2e^{3t} \\ 0
+        \end{bmatrix} \\
+        &= -\, \frac{1}{4e^{2t}} \begin{bmatrix}
+            -4e^{2t} \\ -4e^{6t}
+        \end{bmatrix} \\
+        &= \begin{bmatrix}
+            1 \\ e^{4t}
+        \end{bmatrix}
+    \end{align*}
+
+    now we continue and find $\overrightarrow{\mathbf{x}}_p$ using the formula
+    \begin{align*}
+        \overrightarrow{\mathbf{x}}_p = \Phi (t) \int \Phi^{-1} (t) \overrightarrow{f}(t) \> dt
+        &= \begin{bmatrix}
+            e^{3t} & e^{-t}\\ 2e^{3t} & -2e^{-t}
+        \end{bmatrix} \, \int \begin{bmatrix}
+            1 \\ e^{4t}
+        \end{bmatrix} \> dt \\[0.8em]
+        &= \begin{bmatrix}
+            e^{3t} & e^{-t}\\ 2e^{3t} & -2e^{-t}
+        \end{bmatrix} \, \begin{bmatrix}
+            \int 1 \> dt \\[0.6em]  \int e^{4t} \> dt
+        \end{bmatrix}\\
+        &= \begin{bmatrix}
+            e^{3t} & e^{-t}\\ 2e^{3t} & -2e^{-t}
+        \end{bmatrix} \, \begin{bmatrix}
+            t \\ \frac{1}{4}e^{4t} 
+        \end{bmatrix} & \text{ignore constants}\\
+    \end{align*}
+
+    thus the particular solution is 
+    \[
+        \overrightarrow{\mathbf{x}}_p = e^{3t} \begin{bmatrix}
+            t + \frac{1}{4} \\[0.6em] 2t - \frac{1}{2}
+        \end{bmatrix}
+    \]
 \end{solution}
 
 \begin{theorem}[Solving IVP using fundamental matrix]
