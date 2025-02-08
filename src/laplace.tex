@@ -311,13 +311,34 @@ For example, $\sin(t + 2\pi) = \sin(t)$, so the function $\sin(t)$ is a periodic
 with period of $2\pi$.
 
 \begin{theorem}[Laplace Transform of Periodic Function]
-    Suppose $\mathcal{L}\{f(t)\}$ exists and $\exists \hat{\tau} > 0$ s.t. $f(t + \hat{\tau}) = f(t)$ for all 
+    Suppose $\mathcal{L}\{f(t)\}$ exists and there exists $T > 0$ s.t. $f(t + T) = f(t)$ for all 
     $t \geq 0$, then 
 
     \begin{equation}
-        \mathcal{L}\{f(t)\} = \frac{1}{1 - e^{-st}} \int_{0}^{\hat{\tau}} e^{-st}\, f(t)\> dt
+        \mathcal{L}\{f(t)\} = \frac{1}{1 - e^{-st}} \int_{0}^{T} e^{-st}\, f(t)\> dt
     \end{equation}
 \end{theorem}
+\begin{proof}
+    Let $\tau = t - T$, $d\tau = dt$, and $t = T$ as $T \to \infty$. 
+
+    The Laplace transform of $f(t)$ is 
+
+    \begin{equation*}
+        \int^\infty_T e^{-st}f(t)\> dt = \int^\infty_0 e^{-s(\tau + T)} f(\tau + T) \> d\tau = e^{-sT} \int^\infty_0 e^{-s\tau} f(\tau) \> d\tau
+    \end{equation*}
+
+    We can now rewrite $\mathcal{L}\{ f(t) \}$ into this form
+
+    \begin{equation*}
+        \mathcal{L}\{f(t)\} = \frac{1}{1 - e^{-st}} \mathcal{L} \{ f_1(t) \}
+    \end{equation*}
+
+    With this we can find $\mathcal{L}\{ f(t) \}$ without integration because 
+    
+    \[
+        f_1(t) = f(t)[H(t - 0) - H(t - T)]
+    \]
+\end{proof}
 
 \section{Tutorials}
 
